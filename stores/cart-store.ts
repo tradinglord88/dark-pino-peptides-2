@@ -132,9 +132,8 @@ export const useCartStore = create<CartStore>()(
       },
 
       getShipping: () => {
-        // Free shipping over $150, otherwise $15
-        const subtotal = get().getSubtotal()
-        return subtotal >= 150 ? 0 : 15
+        // Free shipping on all orders
+        return 0
       },
 
       getTotal: () => {

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ShoppingCart, Home, Package } from 'lucide-react'
 import { useCartStore } from '@/stores/cart-store'
 
@@ -13,9 +14,18 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">DP</span>
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2">
+              <Image
+                src="/images/mascots/sacrifice-mascot.jpg"
+                alt="Dark Pino Mascot"
+                width={32}
+                height={32}
+                className="rounded-lg object-cover"
+              />
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">DP</span>
+              </div>
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Dark Pino Peptides
