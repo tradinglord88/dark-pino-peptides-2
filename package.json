@@ -8,9 +8,14 @@
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "clean": "rm -rf .next node_modules/.cache",
+    "clean:all": "rm -rf .next node_modules/.cache node_modules && npm install",
+    "fresh-build": "npm run clean && npm run build",
+    "fresh-dev": "npm run clean && npm run dev"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.9.2",
     "@stripe/stripe-js": "^7.9.0",
     "@supabase/supabase-js": "^2.56.1",
     "clsx": "^2.1.1",

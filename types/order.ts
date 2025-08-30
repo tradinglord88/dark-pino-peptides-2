@@ -1,6 +1,12 @@
 import { CartItem } from './cart'
 
-export type OrderStatus = 'pending' | 'paid' | 'processing' | 'shipped' | 'delivered' | 'cancelled'
+export type OrderStatus =
+  | 'pending'
+  | 'paid'
+  | 'processing'
+  | 'shipped'
+  | 'delivered'
+  | 'cancelled'
 
 export interface Order {
   id: string

@@ -23,6 +23,15 @@ npm run lint
 
 # Format code with Prettier
 npm run format
+
+# Cache management (use when experiencing build errors)
+npm run clean         # Clear Next.js and Node cache
+npm run clean:all     # Full reset: clear cache + reinstall dependencies
+npm run fresh-build   # Clean cache then build
+npm run fresh-dev     # Clean cache then start dev server
+
+# Alternative cache clearing
+./clear-cache.sh      # Run the bash script for cache cleanup
 ```
 
 ## Tech Stack
@@ -38,6 +47,7 @@ npm run format
 ## Architecture
 
 The application follows a streamlined Next.js App Router architecture:
+
 - Server components by default for better performance
 - Client components only for interactivity (cart, forms)
 - API routes handle backend functionality
@@ -57,12 +67,14 @@ The application follows a streamlined Next.js App Router architecture:
 ## Key Features (MVP)
 
 ### E-commerce Core
+
 - Product catalog with grid layout
 - Shopping cart with localStorage persistence
 - Stripe checkout integration
 - Order confirmation system
 
 ### Design Requirements
+
 - Dark theme with modern, minimal design
 - Mobile-first responsive layout
 - Accessibility compliance
@@ -71,6 +83,7 @@ The application follows a streamlined Next.js App Router architecture:
 ## Environment Variables
 
 Required environment variables (see `.env.example`):
+
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
@@ -85,3 +98,26 @@ Required environment variables (see `.env.example`):
 - Use Tailwind classes for styling
 - Implement proper error handling
 - Test payment flows thoroughly
+
+## Troubleshooting
+
+### Cache Issues
+
+If you encounter build errors like "ENOENT: no such file or directory, open '.next/server/app/page.js'":
+
+1. **Quick fix**: `npm run clean` or `./clear-cache.sh`
+2. **Full reset**: `npm run clean:all`
+3. **Fresh development**: `npm run fresh-dev`
+
+### Common Cache Error Patterns
+
+- Module not found errors after adding new components
+- Stale build artifacts causing runtime errors
+- TypeScript errors that persist after fixing code
+- Hot reload not working properly
+
+### Configuration Features
+
+- `cleanDistDir: true` - Automatically cleans build directory
+- `webpackBuildWorker: false` - Improves cache stability
+- Development cache disabled - Prevents stale cache in dev mode

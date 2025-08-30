@@ -1,0 +1,35 @@
+<svg width="120" height="160" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Vial Body -->
+  <rect x="35" y="40" width="50" height="100" rx="8" fill="url(#vialGradient)" stroke="#6B7280" stroke-width="1"/>
+  
+  <!-- Vial Cap -->
+  <rect x="30" y="30" width="60" height="20" rx="4" fill="url(#capGradient)" stroke="#4B5563" stroke-width="1"/>
+  
+  <!-- Label -->
+  <rect x="38" y="60" width="44" height="30" rx="2" fill="rgba(255,255,255,0.9)" stroke="#E5E7EB" stroke-width="0.5"/>
+  
+  <!-- Label Text -->
+  <text x="60" y="72" text-anchor="middle" fill="#1F2937" font-size="8" font-weight="bold">PEPTIDE</text>
+  <text x="60" y="82" text-anchor="middle" fill="#6B7280" font-size="6">Research Use</text>
+  
+  <!-- Liquid -->
+  <rect x="38" y="95" width="44" height="40" rx="6" fill="url(#liquidGradient)" opacity="0.8"/>
+  
+  <!-- Reflection -->
+  <rect x="40" y="45" width="8" height="85" rx="4" fill="rgba(255,255,255,0.2)"/>
+  
+  <defs>
+    <linearGradient id="vialGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9FAFB"/>
+      <stop offset="100%" stop-color="#D1D5DB"/>
+    </linearGradient>
+    <linearGradient id="capGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9CA3AF"/>
+      <stop offset="100%" stop-color="#6B7280"/>
+    </linearGradient>
+    <linearGradient id="liquidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+</svg>
