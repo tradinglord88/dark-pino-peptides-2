@@ -46,15 +46,11 @@ export function DNAHelix() {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={points.length / 3}
-            array={new Float32Array(points)}
-            itemSize={3}
+            args={[new Float32Array(points), 3]}
           />
           <bufferAttribute
-            attach="attributes-color"
-            count={colors.length / 3}
-            array={new Float32Array(colors)}
-            itemSize={3}
+            attach="attributes-color"  
+            args={[new Float32Array(colors), 3]}
           />
         </bufferGeometry>
         <pointsMaterial
