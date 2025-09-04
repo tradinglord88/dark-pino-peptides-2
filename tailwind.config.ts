@@ -34,6 +34,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        'permanent-marker': ['var(--font-permanent-marker)', 'cursive'],
       },
     },
   },

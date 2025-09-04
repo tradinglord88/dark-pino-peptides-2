@@ -9,6 +9,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
+  --font-permanent-marker: var(--font-permanent-marker);
 }
 
 body {
@@ -145,4 +146,38 @@ body {
 
 .animation-delay-2000 {
   animation-delay: 2s;
+}
+
+/* 3D Text Effects */
+.text-3d-yellow {
+  color: #ffd700;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* 3D Scene optimizations */
+.dna-canvas {
+  background: transparent !important;
+}
+
+/* Mobile responsive text sizes */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 4rem;
+    line-height: 1;
+  }
+  
+  .hero-subtitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
 }

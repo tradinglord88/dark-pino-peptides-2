@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Permanent_Marker } from 'next/font/google'
 import { Header } from '@/components/layout/header'
 import { CartDrawer } from '@/components/cart/cart-drawer'
 import { ToastContainer } from '@/components/ui/toast'
@@ -8,6 +8,12 @@ import './globals.css'
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+})
+
+const permanentMarker = Permanent_Marker({
+  variable: '--font-permanent-marker',
+  subsets: ['latin'],
+  weight: '400',
 })
 
 export const metadata: Metadata = {
@@ -53,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${permanentMarker.variable} font-sans antialiased bg-slate-950 text-white min-h-screen`}>
         <Header />
         <main>{children}</main>
         <CartDrawer />

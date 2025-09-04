@@ -10,26 +10,34 @@ export function Header() {
   const itemCount = isHydrated ? getItemCount() : 0
 
   return (
-    <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50">
+    <header className="sticky top-0 z-30 bg-black/95 backdrop-blur-lg border-b border-gray-800/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
               <Image
-                src="/images/mascots/sacrifice-mascot.jpg"
-                alt="Dark Pino Mascot"
+                src="/images/pepe-mascot.png"
+                alt="Dark Pino Pepe Logo"
                 width={32}
                 height={32}
                 className="rounded-lg object-cover"
               />
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">DP</span>
-              </div>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Dark Pino Peptides
-            </span>
+            <div className="flex items-center space-x-4">
+              <div className="flex flex-col">
+                <span className="text-lg font-permanent-marker text-3d-yellow leading-tight">
+                  DARK PINO
+                </span>
+                <span className="text-sm font-bold text-white tracking-wider leading-tight">
+                  PEPTIDES
+                </span>
+              </div>
+              <div className="hidden md:block h-8 w-px bg-gray-500/50"></div>
+              <span className="hidden md:block text-xs font-semibold text-white/70 tracking-widest uppercase">
+                NEXT-GEN RESEARCH CHEMISTRY
+              </span>
+            </div>
           </Link>
 
           {/* Navigation */}
