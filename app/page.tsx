@@ -60,7 +60,7 @@ export default function HomePage() {
 
         {/* Subtitle */}
         <div className="mb-8 animate-fade-in-up animation-delay-400">
-          <p className="text-lg md:text-xl bg-white text-black px-6 py-3 rounded-lg text-center max-w-2xl mx-auto font-medium shadow-lg">
+          <p className="text-lg md:text-xl bg-white bg-opacity-100 text-black px-6 py-3 rounded-lg text-center max-w-2xl mx-auto font-medium shadow-lg border border-gray-200">
             Premium research compounds for advanced scientific exploration
           </p>
         </div>

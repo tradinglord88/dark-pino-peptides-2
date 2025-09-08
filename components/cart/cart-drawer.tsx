@@ -114,7 +114,7 @@ export function CartDrawer() {
           ) : (
             <>
               {/* Cart Items */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4 min-h-0">
+              <div className="flex-1 overflow-y-auto p-6 space-y-6 min-h-0">
                 {items.map((item) => (
                   <CartItem key={item.product.id} item={item} />
                 ))}
