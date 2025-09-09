@@ -106,10 +106,10 @@ export default function CheckoutPage() {
   const stripePromise = getStripe()
 
   return (
-    <div className="min-h-screen bg-gray-900 py-8">
+    <div className="min-h-screen bg-gray-900 py-4 sm:py-8">
       <div className="container mx-auto max-w-2xl px-4">
-        <div className="bg-gray-800 rounded-lg p-8 shadow-lg">
-          <h1 className="text-2xl font-bold text-white mb-8">
+        <div className="bg-gray-800 rounded-lg p-4 sm:p-6 lg:p-8 shadow-lg">
+          <h1 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8">
             Complete Your Order
           </h1>
 
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
             <h3 className="text-lg font-semibold text-white mb-4">
               Select Payment Method
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               <button
                 onClick={() => setPaymentMethod('stripe')}
                 className={`p-4 rounded-lg border-2 transition-colors ${

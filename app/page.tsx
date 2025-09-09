@@ -33,42 +33,42 @@ export default function HomePage() {
 
 
       {/* Hero Content */}
-      <div className="relative z-20 min-h-screen flex flex-col justify-center items-center px-4">
+      <div className="relative z-20 min-h-screen flex flex-col justify-center items-center px-4 py-8">
         {/* Mascot above title */}
-        <div className="text-center mb-4 animate-fade-in-up">
+        <div className="text-center mb-4 sm:mb-6 animate-fade-in-up">
           <div className="animate-float">
             <Image
               src="/images/mascots/dark-pino-mascot.png"
               alt="Dark Pino Mascot"
-              width={200}
-              height={200}
-              className="drop-shadow-2xl mx-auto"
+              width={150}
+              height={150}
+              className="drop-shadow-2xl mx-auto sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px]"
               priority
             />
           </div>
         </div>
 
         {/* Main Title */}
-        <div className="text-center mb-8 animate-fade-in-up animation-delay-200">
-          <h1 className="hero-title text-6xl sm:text-8xl md:text-9xl font-permanent-marker mb-2 tracking-wider">
+        <div className="text-center mb-6 sm:mb-8 animate-fade-in-up animation-delay-200">
+          <h1 className="hero-title text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-permanent-marker mb-2 tracking-wider leading-tight">
             <span className="text-3d-yellow">
               DARK PINO
             </span>
           </h1>
-          <h2 className="hero-subtitle text-2xl sm:text-4xl md:text-5xl font-bold tracking-widest text-white/90 drop-shadow-lg">
+          <h2 className="hero-subtitle text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-widest text-white/90 drop-shadow-lg">
             PEPTIDES
           </h2>
         </div>
 
         {/* Subtitle */}
-        <div className="mb-8 animate-fade-in-up animation-delay-400">
-          <p className="text-lg md:text-xl bg-white bg-opacity-100 text-black px-6 py-3 rounded-lg text-center max-w-2xl mx-auto font-medium shadow-lg border border-gray-200">
+        <div className="mb-6 sm:mb-8 animate-fade-in-up animation-delay-400">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl bg-white bg-opacity-100 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-center max-w-xs sm:max-w-lg md:max-w-2xl mx-auto font-medium shadow-lg border border-gray-200">
             Premium research compounds for advanced scientific exploration
           </p>
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in-up animation-delay-600">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 animate-fade-in-up animation-delay-600 w-full max-w-sm sm:max-w-none">
           <Link
             href="/products"
             className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/25 text-center"

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingCart, Home, Package, TestTube, Droplet } from 'lucide-react'
+import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles } from 'lucide-react'
 import { useCartStore } from '@/stores/cart-store'
 
 export function Header() {
@@ -70,6 +70,13 @@ export function Header() {
               <Droplet size={18} />
               <span>Bacteriostatic Water</span>
             </Link>
+            <Link
+              href="/skincare"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Sparkles size={18} />
+              <span>Skincare</span>
+            </Link>
           </nav>
 
           {/* Cart Button */}
@@ -93,34 +100,41 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <div className="md:hidden pb-4">
-          <nav className="flex items-center space-x-4 overflow-x-auto">
+          <nav className="flex items-center space-x-3 overflow-x-auto scrollbar-hide px-1">
             <Link
               href="/"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
             >
               <Home size={16} />
-              <span className="text-sm">Home</span>
+              <span className="text-xs">Home</span>
             </Link>
             <Link
               href="/products"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
             >
               <Package size={16} />
-              <span className="text-sm">Products</span>
+              <span className="text-xs">Products</span>
             </Link>
             <Link
               href="/peptides"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
             >
               <TestTube size={16} />
-              <span className="text-sm">Peptides</span>
+              <span className="text-xs">Peptides</span>
             </Link>
             <Link
               href="/bacteriostatic-water"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
             >
               <Droplet size={16} />
-              <span className="text-sm">Bact Water</span>
+              <span className="text-xs">Water</span>
+            </Link>
+            <Link
+              href="/skincare"
+              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
+            >
+              <Sparkles size={16} />
+              <span className="text-xs">Skincare</span>
             </Link>
           </nav>
         </div>
