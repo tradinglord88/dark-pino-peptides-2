@@ -18,23 +18,26 @@ export function HeroScene() {
         }}
       >
         <Suspense fallback={null}>
-          {/* Lighting */}
-          <ambientLight intensity={0.4} />
-          <pointLight position={[10, 10, 10]} intensity={0.8} />
-          <pointLight position={[-10, -10, -10]} intensity={0.3} color="#00ffff" />
+          {/* Enhanced Scientific Lighting */}
+          <ambientLight intensity={0.3} color="#4f46e5" />
+          <directionalLight position={[10, 10, 5]} intensity={0.6} color="#06b6d4" />
+          <pointLight position={[5, 5, 5]} intensity={0.8} color="#06b6d4" />
+          <pointLight position={[-5, -5, -5]} intensity={0.4} color="#a855f7" />
+          <pointLight position={[0, 8, 0]} intensity={0.3} color="#10b981" />
+          <pointLight position={[0, -8, 0]} intensity={0.3} color="#f59e0b" />
           
           {/* DNA Helix */}
           <DNAHelix />
           
-          {/* Camera controls - subtle movement only */}
+          {/* Camera controls - gentle scientific observation */}
           <OrbitControls
             enableZoom={false}
             enablePan={false}
             enableRotate={true}
             autoRotate={true}
-            autoRotateSpeed={0.5}
-            maxPolarAngle={Math.PI / 2.2}
-            minPolarAngle={Math.PI / 2.8}
+            autoRotateSpeed={0.3}
+            maxPolarAngle={Math.PI / 2.1}
+            minPolarAngle={Math.PI / 2.9}
           />
         </Suspense>
       </Canvas>

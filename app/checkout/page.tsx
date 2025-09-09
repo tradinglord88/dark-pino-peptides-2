@@ -6,7 +6,9 @@ import { getStripe } from '@/lib/stripe/client'
 import { useCartStore } from '@/stores/cart-store'
 import { PaymentForm } from '@/components/checkout/payment-form'
 import { SolanaPayForm } from '@/components/checkout/solana-pay-form'
+import { ETransferForm } from '@/components/checkout/etransfer-form'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { PaymentMethod } from '@/types/solana'
 
 export default function CheckoutPage() {
@@ -59,7 +61,7 @@ export default function CheckoutPage() {
 
       createPaymentIntent()
     } else {
-      // For Solana Pay, no server setup needed
+      // For Solana Pay and E-Transfer, no server setup needed
       setLoading(false)
     }
   }, [items, getTotal, router, paymentMethod])
@@ -142,7 +144,7 @@ export default function CheckoutPage() {
             <h3 className="text-lg font-semibold text-white mb-4">
               Select Payment Method
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <button
                 onClick={() => setPaymentMethod('stripe')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
@@ -169,12 +171,33 @@ export default function CheckoutPage() {
                 }`}
               >
                 <div className="flex items-center justify-center mb-2">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7.88 4.5c.2-.32.56-.5.94-.5h11.78c.83 0 1.28.93.78 1.58L18.12 8.5c-.2.32-.56.5-.94.5H5.4c-.83 0-1.28-.93-.78-1.58L7.88 4.5zM16.12 15.5c-.2.32-.56.5-.94.5H3.4c-.83 0-1.28.93-.78 1.58L5.88 20.5c.2.32.56.5.94.5h11.78c.83 0 1.28-.93.78-1.58l-3.26-2.92zM16.12 10.92c-.2-.32-.56-.5-.94-.5H3.4c-.83 0-1.28.93-.78 1.58L5.88 15c.2.32.56.5.94.5h11.78c.83 0 1.28-.93.78-1.58l-3.26-2.5z"/>
-                  </svg>
+                  <Image 
+                    src="/images/solana-logo.svg" 
+                    alt="Solana" 
+                    width={32}
+                    height={32}
+                    className="w-8 h-8"
+                  />
                 </div>
                 <div className="text-white font-medium">Solana Pay</div>
                 <div className="text-gray-400 text-sm">USDC • ~$0.0005 fee</div>
+              </button>
+
+              <button
+                onClick={() => setPaymentMethod('etransfer')}
+                className={`p-4 rounded-lg border-2 transition-colors ${
+                  paymentMethod === 'etransfer'
+                    ? 'border-green-500 bg-green-500/10'
+                    : 'border-gray-700 bg-gray-800/50 hover:border-gray-600'
+                }`}
+              >
+                <div className="flex items-center justify-center mb-2">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm2 4v-2H3a2 2 0 0 0 2 2zM3 9h2V7H3v2zm12 12h2v-2h-2v2zm4-18H9a2 2 0 0 0-2 2v1h10a2 2 0 0 1 2 2v8h1a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-2 16v-2h-2v2h2zm0-8v2h2v-2h-2zm-8 0v2h2v-2H9zm0 0H7V9H5v2a2 2 0 0 0 2 2h2zm0 4v2h2v-2H9zm4-4v2h2v-2h-2z"/>
+                  </svg>
+                </div>
+                <div className="text-white font-medium">E-Transfer</div>
+                <div className="text-gray-400 text-sm">🇨🇦 CAD • 1-2 hours</div>
               </button>
             </div>
           </div>
@@ -206,6 +229,12 @@ export default function CheckoutPage() {
             </Elements>
           ) : paymentMethod === 'solana' ? (
             <SolanaPayForm
+              amount={getTotal()}
+              onSuccess={handlePaymentSuccess}
+              onError={handlePaymentError}
+            />
+          ) : paymentMethod === 'etransfer' ? (
+            <ETransferForm
               amount={getTotal()}
               onSuccess={handlePaymentSuccess}
               onError={handlePaymentError}

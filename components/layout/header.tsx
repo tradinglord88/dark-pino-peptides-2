@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingCart, Home, Package } from 'lucide-react'
+import { ShoppingCart, Home, Package, TestTube, Droplet } from 'lucide-react'
 import { useCartStore } from '@/stores/cart-store'
 
 export function Header() {
@@ -56,6 +56,20 @@ export function Header() {
               <Package size={18} />
               <span>Products</span>
             </Link>
+            <Link
+              href="/peptides"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <TestTube size={18} />
+              <span>Peptides</span>
+            </Link>
+            <Link
+              href="/bacteriostatic-water"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Droplet size={18} />
+              <span>Bacteriostatic Water</span>
+            </Link>
           </nav>
 
           {/* Cart Button */}
@@ -79,20 +93,34 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <div className="md:hidden pb-4">
-          <nav className="flex items-center space-x-6">
+          <nav className="flex items-center space-x-4 overflow-x-auto">
             <Link
               href="/"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
             >
               <Home size={16} />
               <span className="text-sm">Home</span>
             </Link>
             <Link
               href="/products"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
             >
               <Package size={16} />
               <span className="text-sm">Products</span>
+            </Link>
+            <Link
+              href="/peptides"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+            >
+              <TestTube size={16} />
+              <span className="text-sm">Peptides</span>
+            </Link>
+            <Link
+              href="/bacteriostatic-water"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+            >
+              <Droplet size={16} />
+              <span className="text-sm">Bact Water</span>
             </Link>
           </nav>
         </div>

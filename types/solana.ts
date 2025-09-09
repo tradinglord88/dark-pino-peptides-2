@@ -20,4 +20,4 @@ export interface SolanaOrderData {
   timestamp: number
 }
 
-export type PaymentMethod = 'stripe' | 'solana'
+export type PaymentMethod = 'stripe' | 'solana' | 'etransfer'

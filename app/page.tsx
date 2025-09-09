@@ -1,34 +1,36 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { HeroScene } from '@/components/3d/hero-scene'
 import { Clouds } from '@/components/ui/clouds'
 
 export default function HomePage() {
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
-      {/* Space Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-slate-900 to-black">
-        {/* Stars background effect */}
-        <div className="absolute inset-0 opacity-30">
-          {Array.from({ length: 100 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`,
-              }}
-            />
-          ))}
+      {/* DNA Background - CSS fallback with option for custom image */}
+      <div className="absolute inset-0">
+        {/* Fallback gradient background inspired by DNA visualization */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-teal-900 to-cyan-950">
+          {/* Overlay pattern for DNA-like texture */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 via-transparent to-purple-500/20" />
+            <div className="absolute inset-0 bg-gradient-to-bl from-teal-500/15 via-transparent to-blue-500/15" />
+          </div>
         </div>
+        
+        {/* Custom background image (when dna-background.png exists) */}
+        <div className="absolute inset-0 opacity-80" id="custom-bg">
+          <Image
+            src="/images/dna-background.png"
+            alt="DNA Background"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+        
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
       </div>
 
-      {/* 3D DNA Helix Scene */}
-      <div className="absolute inset-0 z-10">
-        <HeroScene />
-      </div>
 
       {/* Hero Content */}
       <div className="relative z-20 min-h-screen flex flex-col justify-center items-center px-4">
