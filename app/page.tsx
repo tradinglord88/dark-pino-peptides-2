@@ -68,14 +68,14 @@ export default function HomePage() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 animate-fade-in-up animation-delay-600 w-full max-w-sm sm:max-w-none">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 animate-fade-in-up animation-delay-600 justify-center items-center">
           <Link
             href="/products"
-            className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/25 text-center"
+            className="w-full sm:w-auto px-8 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/25 text-center min-w-[160px]"
           >
             Explore Products
           </Link>
-          <button className="px-6 py-3 sm:px-8 sm:py-4 border-2 border-white/30 hover:border-white/50 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:bg-white/10">
+          <button className="w-full sm:w-auto px-8 py-3 sm:px-10 sm:py-4 border-2 border-white/30 hover:border-white/50 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:bg-white/10 min-w-[160px]">
             Learn More
           </button>
         </div>
