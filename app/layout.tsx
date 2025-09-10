@@ -3,6 +3,7 @@ import { Inter, Permanent_Marker } from 'next/font/google'
 import { Header } from '@/components/layout/header'
 import { CartDrawer } from '@/components/cart/cart-drawer'
 import { ToastContainer } from '@/components/ui/toast'
+import { TermsModal } from '@/components/ui/terms-modal'
 import './globals.css'
 
 const inter = Inter({
@@ -63,6 +64,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <CartDrawer />
+        <TermsModal />
         <ToastContainer />
       </body>
     </html>

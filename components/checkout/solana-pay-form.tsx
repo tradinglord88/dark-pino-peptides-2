@@ -10,14 +10,17 @@ import {
   checkTransactionStatus 
 } from '@/lib/solana/payment'
 import { SolanaPaymentState } from '@/types/solana'
+import { ShippingInfo } from './shipping-form'
 
 interface SolanaPayFormProps {
   amount: number
+  shippingInfo?: ShippingInfo
   onSuccess: (signature: string) => void
   onError: (error: string) => void
+  onBackToShipping?: () => void
 }
 
-export function SolanaPayForm({ amount, onSuccess, onError }: SolanaPayFormProps) {
+export function SolanaPayForm({ amount, shippingInfo, onSuccess, onError, onBackToShipping }: SolanaPayFormProps) {
   const [paymentState, setPaymentState] = useState<SolanaPaymentState>({
     status: 'idle'
   })
@@ -82,11 +85,15 @@ export function SolanaPayForm({ amount, onSuccess, onError }: SolanaPayFormProps
         console.log('Reference generated:', reference.toString())
         
         console.log('Creating payment request...')
+        const description = shippingInfo 
+          ? `Payment of $${amount.toFixed(2)} for research peptides - Ship to: ${shippingInfo.firstName} ${shippingInfo.lastName}, ${shippingInfo.city}, ${shippingInfo.state}`
+          : `Payment of $${amount.toFixed(2)} for research peptides`
+        
         const paymentData = createSolanaPaymentRequest(
           amount,
           reference,
           'Dark Pino Peptides',
-          `Payment of $${amount.toFixed(2)} for research peptides`
+          description
         )
         console.log('Payment data created:', paymentData)
         
@@ -176,6 +183,30 @@ export function SolanaPayForm({ amount, onSuccess, onError }: SolanaPayFormProps
   return (
     <div className="text-center p-6">
       <h3 className="text-lg font-semibold text-white mb-4">Pay with Solana</h3>
+      
+      {/* Shipping Info Display */}
+      {shippingInfo && (
+        <div className="mb-6 p-4 bg-gray-700/30 rounded-lg text-left">
+          <div className="flex justify-between items-start mb-2">
+            <h4 className="text-sm font-semibold text-gray-300">Shipping To:</h4>
+            {onBackToShipping && (
+              <button
+                onClick={onBackToShipping}
+                className="text-xs text-blue-400 hover:text-blue-300 underline"
+              >
+                Edit
+              </button>
+            )}
+          </div>
+          <div className="text-sm text-white space-y-1">
+            <p>{shippingInfo.firstName} {shippingInfo.lastName}</p>
+            <p>{shippingInfo.address}</p>
+            <p>{shippingInfo.city}, {shippingInfo.state} {shippingInfo.postalCode}</p>
+            <p>{shippingInfo.country}</p>
+            {shippingInfo.email && <p className="text-gray-400">{shippingInfo.email}</p>}
+          </div>
+        </div>
+      )}
       
       {paymentState.paymentUrl && (
         <div className="mb-6">

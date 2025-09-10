@@ -1,12 +1,16 @@
 'use client'
 
+import { ShippingInfo } from './shipping-form'
+
 interface ETransferFormProps {
   amount: number
+  shippingInfo?: ShippingInfo
   onSuccess: (reference: string) => void
   onError: (error: string) => void
+  onBackToShipping?: () => void
 }
 
-export function ETransferForm({ amount, onSuccess }: ETransferFormProps) {
+export function ETransferForm({ amount, shippingInfo, onSuccess, onBackToShipping }: ETransferFormProps) {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('payments@darkpinopeptides.com')
     // You could add a toast notification here
@@ -21,6 +25,30 @@ export function ETransferForm({ amount, onSuccess }: ETransferFormProps) {
   return (
     <div className="text-center p-6">
       <h3 className="text-lg font-semibold text-white mb-4">E-Transfer Payment</h3>
+      
+      {/* Shipping Info Display */}
+      {shippingInfo && (
+        <div className="mb-6 p-4 bg-gray-700/30 rounded-lg text-left">
+          <div className="flex justify-between items-start mb-2">
+            <h4 className="text-sm font-semibold text-gray-300">Shipping To:</h4>
+            {onBackToShipping && (
+              <button
+                onClick={onBackToShipping}
+                className="text-xs text-blue-400 hover:text-blue-300 underline"
+              >
+                Edit
+              </button>
+            )}
+          </div>
+          <div className="text-sm text-white space-y-1">
+            <p>{shippingInfo.firstName} {shippingInfo.lastName}</p>
+            <p>{shippingInfo.address}</p>
+            <p>{shippingInfo.city}, {shippingInfo.state} {shippingInfo.postalCode}</p>
+            <p>{shippingInfo.country}</p>
+            {shippingInfo.email && <p className="text-gray-400">{shippingInfo.email}</p>}
+          </div>
+        </div>
+      )}
       
       <div className="bg-gray-700/50 p-6 rounded-lg mb-6">
         <div className="space-y-4 text-left">

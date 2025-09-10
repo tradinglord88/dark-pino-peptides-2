@@ -7,6 +7,7 @@ import { useCartStore } from '@/stores/cart-store'
 import { PaymentForm } from '@/components/checkout/payment-form'
 import { SolanaPayForm } from '@/components/checkout/solana-pay-form'
 import { ETransferForm } from '@/components/checkout/etransfer-form'
+import { ShippingForm, ShippingInfo } from '@/components/checkout/shipping-form'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { PaymentMethod } from '@/types/solana'
@@ -16,6 +17,8 @@ export default function CheckoutPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('stripe')
+  const [showShippingForm, setShowShippingForm] = useState(false)
+  const [shippingInfo, setShippingInfo] = useState<ShippingInfo | null>(null)
   const { items, getTotal, clearCart } = useCartStore()
   const router = useRouter()
 
@@ -77,6 +80,25 @@ export default function CheckoutPage() {
 
   const handlePaymentError = (errorMessage: string) => {
     setError(errorMessage)
+  }
+
+  const handlePaymentMethodChange = (method: PaymentMethod) => {
+    setPaymentMethod(method)
+    // Show shipping form for non-Stripe payments if not already collected
+    if (method !== 'stripe' && !shippingInfo) {
+      setShowShippingForm(true)
+    } else if (method === 'stripe') {
+      setShowShippingForm(false)
+    }
+  }
+
+  const handleShippingSubmit = (shipping: ShippingInfo) => {
+    setShippingInfo(shipping)
+    setShowShippingForm(false)
+  }
+
+  const handleBackToShipping = () => {
+    setShowShippingForm(true)
   }
 
   if (loading) {
@@ -146,7 +168,7 @@ export default function CheckoutPage() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               <button
-                onClick={() => setPaymentMethod('stripe')}
+                onClick={() => handlePaymentMethodChange('stripe')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
                   paymentMethod === 'stripe'
                     ? 'border-blue-500 bg-blue-500/10'
@@ -163,7 +185,7 @@ export default function CheckoutPage() {
               </button>
 
               <button
-                onClick={() => setPaymentMethod('solana')}
+                onClick={() => handlePaymentMethodChange('solana')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
                   paymentMethod === 'solana'
                     ? 'border-purple-500 bg-purple-500/10'
@@ -184,7 +206,7 @@ export default function CheckoutPage() {
               </button>
 
               <button
-                onClick={() => setPaymentMethod('etransfer')}
+                onClick={() => handlePaymentMethodChange('etransfer')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
                   paymentMethod === 'etransfer'
                     ? 'border-green-500 bg-green-500/10'
@@ -202,8 +224,13 @@ export default function CheckoutPage() {
             </div>
           </div>
 
-          {/* Payment Form */}
-          {paymentMethod === 'stripe' && clientSecret ? (
+          {/* Shipping Form or Payment Form */}
+          {showShippingForm ? (
+            <ShippingForm
+              onSubmit={handleShippingSubmit}
+              onBack={() => setShowShippingForm(false)}
+            />
+          ) : paymentMethod === 'stripe' && clientSecret ? (
             <Elements
               stripe={stripePromise}
               options={{
@@ -227,17 +254,21 @@ export default function CheckoutPage() {
                 onError={handlePaymentError}
               />
             </Elements>
-          ) : paymentMethod === 'solana' ? (
+          ) : paymentMethod === 'solana' && shippingInfo ? (
             <SolanaPayForm
               amount={getTotal()}
+              shippingInfo={shippingInfo}
               onSuccess={handlePaymentSuccess}
               onError={handlePaymentError}
+              onBackToShipping={handleBackToShipping}
             />
-          ) : paymentMethod === 'etransfer' ? (
+          ) : paymentMethod === 'etransfer' && shippingInfo ? (
             <ETransferForm
               amount={getTotal()}
+              shippingInfo={shippingInfo}
               onSuccess={handlePaymentSuccess}
               onError={handlePaymentError}
+              onBackToShipping={handleBackToShipping}
             />
           ) : null}
 
