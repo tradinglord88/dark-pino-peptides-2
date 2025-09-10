@@ -69,7 +69,7 @@ export function ProductCard({ product }: ProductCardProps) {
       </h3>
 
       {/* Description */}
-      <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+      <p className="text-gray-300 text-sm leading-relaxed mb-4">
         {product.description}
       </p>
 
