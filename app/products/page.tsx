@@ -1,4 +1,5 @@
 import { ProductGrid } from '@/components/shop/product-grid'
+import { SubscriptionPlans } from '@/components/subscriptions/subscription-plans'
 
 export default function ProductsPage() {
   return (
@@ -11,6 +12,21 @@ export default function ProductsPage() {
           <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             Discover our curated selection of high-quality research peptides,
             each rigorously tested for purity and potency.
+          </p>
+        </div>
+
+        {/* Subscription Plans Section */}
+        <div className="mb-16">
+          <SubscriptionPlans />
+        </div>
+
+        {/* Individual Products Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-white">
+            Individual Products
+          </h2>
+          <p className="text-center text-gray-300 mb-8">
+            Purchase individual peptides without a subscription
           </p>
         </div>
 

@@ -2,11 +2,13 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles } from 'lucide-react'
+import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles, User, LogIn } from 'lucide-react'
 import { useCartStore } from '@/stores/cart-store'
+import { useAuthStore } from '@/stores/auth-store'
 
 export function Header() {
   const { getItemCount, toggleCart, isHydrated } = useCartStore()
+  const { user, profile, isHydrated: authHydrated } = useAuthStore()
   const itemCount = isHydrated ? getItemCount() : 0
 
   return (
@@ -79,23 +81,47 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* Cart Button */}
-          <button
-            onClick={toggleCart}
-            className="relative flex items-center space-x-2 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
-          >
-            <ShoppingCart size={20} className="text-white" />
-            <span className="hidden sm:block text-white font-medium">Cart</span>
-
-            {/* Cart Badge */}
-            {itemCount > 0 && (
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">
-                  {itemCount > 99 ? '99+' : itemCount}
+          {/* User & Cart Actions */}
+          <div className="flex items-center space-x-3">
+            {/* User Account */}
+            {authHydrated && user ? (
+              <Link
+                href="/account"
+                className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
+              >
+                <User size={18} className="text-white" />
+                <span className="hidden sm:block text-white font-medium">
+                  {profile?.full_name?.split(' ')[0] || 'Account'}
                 </span>
-              </div>
-            )}
-          </button>
+              </Link>
+            ) : authHydrated ? (
+              <Link
+                href="/auth"
+                className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
+              >
+                <LogIn size={18} className="text-white" />
+                <span className="hidden sm:block text-white font-medium">Sign In</span>
+              </Link>
+            ) : null}
+
+            {/* Cart Button */}
+            <button
+              onClick={toggleCart}
+              className="relative flex items-center space-x-2 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
+            >
+              <ShoppingCart size={20} className="text-white" />
+              <span className="hidden sm:block text-white font-medium">Cart</span>
+
+              {/* Cart Badge */}
+              {itemCount > 0 && (
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">
+                    {itemCount > 99 ? '99+' : itemCount}
+                  </span>
+                </div>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

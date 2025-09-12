@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button'
 interface PaymentFormProps {
   onSuccess: () => void
   onError: (error: string) => void
+  onPaymentStart?: () => Promise<any>
 }
 
-export function PaymentForm({ onSuccess, onError }: PaymentFormProps) {
+export function PaymentForm({ onSuccess, onError, onPaymentStart }: PaymentFormProps) {
   const stripe = useStripe()
   const elements = useElements()
   const [isProcessing, setIsProcessing] = useState(false)
@@ -24,6 +25,11 @@ export function PaymentForm({ onSuccess, onError }: PaymentFormProps) {
     setIsProcessing(true)
 
     try {
+      // Create order in database first if callback provided
+      if (onPaymentStart) {
+        await onPaymentStart()
+      }
+
       const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {

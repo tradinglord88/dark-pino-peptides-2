@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { getStripe } from '@/lib/stripe/client'
 import { useCartStore } from '@/stores/cart-store'
+import { useAuthStore } from '@/stores/auth-store'
 import { PaymentForm } from '@/components/checkout/payment-form'
 import { SolanaPayForm } from '@/components/checkout/solana-pay-form'
 import { ETransferForm } from '@/components/checkout/etransfer-form'
@@ -20,6 +21,7 @@ export default function CheckoutPage() {
   const [showShippingForm, setShowShippingForm] = useState(false)
   const [shippingInfo, setShippingInfo] = useState<ShippingInfo | null>(null)
   const { items, getTotal, clearCart } = useCartStore()
+  const { user, profile } = useAuthStore()
   const router = useRouter()
 
   useEffect(() => {
@@ -69,13 +71,91 @@ export default function CheckoutPage() {
     }
   }, [items, getTotal, router, paymentMethod])
 
-  const handlePaymentSuccess = (signature?: string) => {
-    clearCart()
-    // For Solana payments, we could store the signature for verification
-    if (signature) {
-      console.log('Solana transaction signature:', signature)
+  const createOrder = async (paymentData: any) => {
+    try {
+      const orderPayload = {
+        user_id: user?.id || null,
+        guest_email: user?.email || shippingInfo?.email || null,
+        total_amount: getTotal(),
+        payment_method: paymentMethod,
+        items: items,
+        shipping_info: shippingInfo,
+        ...paymentData
+      }
+
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderPayload),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create order')
+      }
+
+      return data
+    } catch (error) {
+      console.error('Error creating order:', error)
+      throw error
     }
-    router.push('/checkout/success')
+  }
+
+  const handlePaymentSuccess = async (signature?: string) => {
+    try {
+      // Create order record in database
+      const paymentData: any = {}
+      
+      if (paymentMethod === 'solana' && signature) {
+        paymentData.solana_signature = signature
+      } else if (paymentMethod === 'etransfer') {
+        paymentData.etransfer_reference = `etransfer-${Date.now()}`
+      }
+
+      await createOrder(paymentData)
+      
+      clearCart()
+      router.push('/checkout/success')
+    } catch (error) {
+      console.error('Error processing successful payment:', error)
+      setError('Payment processed but order could not be saved. Please contact support.')
+    }
+  }
+
+  const handleStripePayment = async () => {
+    // For Stripe, we need to create the order first, then initiate payment
+    try {
+      // Extract shipping info from Stripe's AddressElement if available
+      const stripeShippingInfo = shippingInfo || {
+        firstName: '',
+        lastName: '',
+        email: user?.email || '',
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        country: 'US'
+      }
+
+      const paymentData = {
+        stripe_session_id: clientSecret // Will be updated by webhook
+      }
+
+      const orderResult = await createOrder(paymentData)
+      console.log('Order created for Stripe payment:', orderResult.order_id)
+      
+      // Stripe payment will be handled by the PaymentForm component
+      // The webhook will update the order status when payment completes
+      return orderResult
+    } catch (error) {
+      console.error('Error creating order for Stripe:', error)
+      setError('Failed to create order. Please try again.')
+      throw error
+    }
   }
 
   const handlePaymentError = (errorMessage: string) => {
@@ -252,6 +332,7 @@ export default function CheckoutPage() {
               <PaymentForm
                 onSuccess={() => handlePaymentSuccess()}
                 onError={handlePaymentError}
+                onPaymentStart={handleStripePayment}
               />
             </Elements>
           ) : paymentMethod === 'solana' && shippingInfo ? (
