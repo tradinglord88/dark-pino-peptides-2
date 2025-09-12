@@ -40,9 +40,9 @@ export default function HomePage() {
             <Image
               src="/images/mascots/dark-pino-mascot.png"
               alt="Dark Pino Mascot"
-              width={150}
-              height={150}
-              className="drop-shadow-2xl mx-auto sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px]"
+              width={720}
+              height={1280}
+              className="drop-shadow-2xl mx-auto w-20 h-auto sm:w-24 md:w-28 lg:w-32"
               priority
             />
           </div>
