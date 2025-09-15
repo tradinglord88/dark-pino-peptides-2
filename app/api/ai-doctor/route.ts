@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
     // Build conversation context
     const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
       { role: 'system', content: PEPTIDE_SYSTEM_PROMPT },
-      ...conversationHistory.map((msg: any) => ({
+      ...conversationHistory.map((msg: { role: 'user' | 'assistant'; content: string }) => ({
         role: msg.role,
         content: msg.content,
       })),

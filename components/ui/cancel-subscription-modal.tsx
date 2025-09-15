@@ -76,7 +76,7 @@ export function CancelSubscriptionModal({
           <h4 className="font-semibold text-red-400 mb-2">⚠️ Before you cancel:</h4>
           <ul className="text-sm text-gray-300 space-y-1">
             <li>• Your subscription will remain active until {new Date(subscription.current_period_end).toLocaleDateString()}</li>
-            <li>• You won't be charged for future billing periods</li>
+            <li>• You won&apos;t be charged for future billing periods</li>
             <li>• You can resubscribe at any time</li>
             <li>• This action cannot be undone</li>
           </ul>

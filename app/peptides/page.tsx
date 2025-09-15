@@ -1,5 +1,4 @@
 import { ProductGrid } from '@/components/shop/product-grid'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export default function PeptidesPage() {

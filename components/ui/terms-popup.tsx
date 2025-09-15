@@ -36,7 +36,7 @@ export default function TermsPopup() {
               <Link href="/terms" className="text-blue-400 hover:text-blue-300 underline">
                 4 partners
               </Link>{' '}
-              use cookies or similar technologies to store, access, and process personal data like your visit on this website, IP addresses and cookie identifiers. Some partners do not ask for your consent to process your data and rely on their legitimate business interest. You can withdraw your consent or object to data processing based on legitimate interest at any time by clicking on "Learn More" or in our Privacy Policy on this website.
+              use cookies or similar technologies to store, access, and process personal data like your visit on this website, IP addresses and cookie identifiers. Some partners do not ask for your consent to process your data and rely on their legitimate business interest. You can withdraw your consent or object to data processing based on legitimate interest at any time by clicking on &quot;Learn More&quot; or in our Privacy Policy on this website.
             </p>
             <div className="text-xs text-gray-400">
               <p className="font-medium mb-1">We and our partners process data for the following purposes</p>

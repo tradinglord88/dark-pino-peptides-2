@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Bot, MessageCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { ChatInterface } from './chat-interface'

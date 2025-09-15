@@ -66,7 +66,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
     }
 
     requestAnimationFrame(() => {
-      [...dyAnims, ...dxAnims].forEach((a: any) => {
+      [...dyAnims, ...dxAnims].forEach((a: SVGAnimateElement) => {
         if (typeof a.beginElement === 'function') {
           try {
             a.beginElement();
@@ -89,9 +89,9 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   }, []);
 
   const vars: CSSProperties = {
-    ['--electric-border-color' as any]: color,
-    ['--eb-border-width' as any]: `${thickness}px`
-  };
+    '--electric-border-color': color,
+    '--eb-border-width': `${thickness}px`
+  } as React.CSSProperties;
 
   return (
     <div ref={rootRef} className={`electric-border ${className ?? ''}`} style={{ ...vars, ...style }}>
