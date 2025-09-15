@@ -1,0 +1,135 @@
+'use client'
+
+import Link from 'next/link'
+import Image from 'next/image'
+import { FeatureCards } from './feature-cards'
+import { Clouds } from '@/components/ui/clouds'
+import SplitText from '@/components/ui/split-text'
+import ElectricBorder from '@/components/ui/electric-border'
+
+export function HeroSection() {
+  return (
+    <div className="relative min-h-screen text-white overflow-hidden">
+      {/* DNA Background - Original Dark Pino Style */}
+      <div className="absolute inset-0">
+        {/* Fallback gradient background inspired by DNA visualization */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-teal-900 to-cyan-950">
+          {/* Overlay pattern for DNA-like texture */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 via-transparent to-purple-500/20" />
+            <div className="absolute inset-0 bg-gradient-to-bl from-teal-500/15 via-transparent to-blue-500/15" />
+          </div>
+        </div>
+        
+        {/* Custom background image (when dna-background.png exists) */}
+        <div className="absolute inset-0 opacity-80" id="custom-bg">
+          <Image
+            src="/images/dna-background.png"
+            alt="DNA Background"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+        
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
+      </div>
+
+
+      {/* Hero Content - Exact Original Layout */}
+      <div className="relative z-20 min-h-screen flex flex-col justify-center items-center px-4 py-8">
+        {/* Mascot above title */}
+        <div className="text-center mb-4 sm:mb-6 animate-fade-in-up">
+          <div className="animate-float">
+            <Image
+              src="/images/mascots/dark-pino-mascot.png"
+              alt="Dark Pino Mascot"
+              width={720}
+              height={1280}
+              className="drop-shadow-2xl mx-auto w-20 h-auto sm:w-24 md:w-28 lg:w-32"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Main Title - Animated with Electric Letter Effects */}
+        <div className="text-center mb-6 sm:mb-8">
+          <SplitText
+            text="DARK PINO"
+            className="text-3d-yellow hero-title text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-permanent-marker mb-2 tracking-wider leading-tight"
+            delay={150}
+            duration={0.8}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 100, scale: 0.6, rotate: -15 }}
+            to={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+            threshold={0.2}
+            autoStart={true}
+            onLetterAnimationComplete={() => console.log('DARK PINO animation complete!')}
+          />
+          <SplitText
+            text="PEPTIDES"
+            className="hero-subtitle text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-widest text-white/90 drop-shadow-lg block mt-2"
+            delay={80}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 50, scale: 0.8 }}
+            to={{ opacity: 1, y: 0, scale: 1 }}
+            threshold={0.2}
+            autoStart={true}
+          />
+        </div>
+
+        {/* Subtitle - Animated with Electric Border */}
+        <div className="mb-6 sm:mb-8">
+          <ElectricBorder
+            color="#7df9ff"
+            speed={1.2}
+            chaos={0.4}
+            thickness={2}
+            style={{ borderRadius: 8 }}
+            className="inline-block"
+          >
+            <div className="bg-white bg-opacity-100 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-center max-w-xs sm:max-w-lg md:max-w-2xl mx-auto font-medium shadow-lg border border-gray-200">
+              <SplitText
+                text="Premium research compounds for advanced scientific exploration"
+                className="text-sm sm:text-base md:text-lg lg:text-xl"
+                delay={50}
+                duration={0.4}
+                ease="power3.out"
+                splitType="words"
+                from={{ opacity: 0, y: 20 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.2}
+                autoStart={true}
+              />
+            </div>
+          </ElectricBorder>
+        </div>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 animate-fade-in-up animation-delay-600 justify-center items-center">
+          <Link
+            href="/products"
+            className="w-full sm:w-auto px-8 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/25 text-center min-w-[160px]"
+          >
+            Explore Products
+          </Link>
+          <button className="w-full sm:w-auto px-8 py-3 sm:px-10 sm:py-4 border-2 border-white/30 hover:border-white/50 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:bg-white/10 min-w-[160px]">
+            Learn More
+          </button>
+        </div>
+      </div>
+
+      {/* Feature Cards Section - Moved below main content */}
+      <div className="relative z-20 -mt-32">
+        <FeatureCards />
+      </div>
+
+      {/* Clouds at bottom - Original Dark Pino Element */}
+      <Clouds />
+    </div>
+  )
+}

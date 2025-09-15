@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter, Permanent_Marker } from 'next/font/google'
 import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
 import { CartDrawer } from '@/components/cart/cart-drawer'
 import { ToastContainer } from '@/components/ui/toast'
 import TermsPopup from '@/components/ui/terms-popup'
+import { CookieConsent } from '@/components/ui/cookie-consent'
+import { ChatWidget } from '@/components/ai-doctor/chat-widget'
 import './globals.css'
 
 const inter = Inter({
@@ -63,8 +66,11 @@ export default function RootLayout({
       <body className={`${inter.variable} ${permanentMarker.variable} font-sans antialiased bg-slate-950 text-white min-h-screen`}>
         <Header />
         <main>{children}</main>
+        <Footer />
         <CartDrawer />
         <TermsPopup />
+        <CookieConsent />
+        <ChatWidget />
         <ToastContainer />
       </body>
     </html>

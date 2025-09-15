@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useAuthStore } from '@/stores/auth-store'
 
 export interface ShippingInfo {
   firstName: string
@@ -21,6 +22,8 @@ interface ShippingFormProps {
 }
 
 export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingFormProps) {
+  const { user, profile } = useAuthStore()
+  
   const [formData, setFormData] = useState<ShippingInfo>({
     firstName: '',
     lastName: '',
@@ -32,6 +35,24 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
     postalCode: '',
     country: 'US'
   })
+
+  // Pre-fill form with user profile data when available
+  useEffect(() => {
+    if (user || profile) {
+      const fullName = profile?.full_name || ''
+      const nameParts = fullName.split(' ')
+      const firstName = nameParts[0] || ''
+      const lastName = nameParts.slice(1).join(' ') || ''
+      
+      setFormData(prev => ({
+        ...prev,
+        firstName,
+        lastName,
+        email: user?.email || profile?.email || prev.email,
+        phone: profile?.phone || prev.phone
+      }))
+    }
+  }, [user, profile])
 
   const [errors, setErrors] = useState<Record<string, string>>({})
 
@@ -86,6 +107,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
+              autoComplete="given-name"
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="John"
             />
@@ -101,6 +123,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
+              autoComplete="family-name"
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Doe"
             />
@@ -119,6 +142,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
               name="email"
               value={formData.email}
               onChange={handleChange}
+              autoComplete="email"
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="john@example.com"
             />
@@ -134,6 +158,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              autoComplete="tel"
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="+1 (555) 123-4567"
             />
@@ -150,6 +175,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
             name="address"
             value={formData.address}
             onChange={handleChange}
+            autoComplete="street-address"
             className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="123 Main Street, Apt 4B"
           />
@@ -167,6 +193,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
               name="city"
               value={formData.city}
               onChange={handleChange}
+              autoComplete="address-level2"
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="New York"
             />
@@ -182,6 +209,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
               name="state"
               value={formData.state}
               onChange={handleChange}
+              autoComplete="address-level1"
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="NY"
             />
@@ -197,6 +225,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
               name="postalCode"
               value={formData.postalCode}
               onChange={handleChange}
+              autoComplete="postal-code"
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="10001"
             />
@@ -213,6 +242,7 @@ export function ShippingForm({ onSubmit, onBack, loading = false }: ShippingForm
             name="country"
             value={formData.country}
             onChange={handleChange}
+            autoComplete="country"
             className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="US">United States</option>
