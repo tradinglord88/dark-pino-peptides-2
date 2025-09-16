@@ -146,6 +146,7 @@ export async function PUT(request: NextRequest) {
     if (solana_signature) updateData.solana_signature = solana_signature
     if (etransfer_reference) updateData.etransfer_reference = etransfer_reference
 
+    // @ts-expect-error - Supabase type inference issue with client vs server
     let query = supabase.from('orders').update(updateData as any)
     
     // Allow finding by order_id or stripe_session_id

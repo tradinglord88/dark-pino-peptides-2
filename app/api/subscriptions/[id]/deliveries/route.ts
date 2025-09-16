@@ -57,7 +57,7 @@ export async function POST(
         delivery_date,
         status: 'pending',
         total_amount
-      })
+      } as any)
       .select()
       .single()
 
