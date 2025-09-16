@@ -53,13 +53,6 @@ export function Header() {
               <span>Home</span>
             </Link>
             <Link
-              href="/products"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Package size={18} />
-              <span>Products</span>
-            </Link>
-            <Link
               href="/peptides"
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
             >
@@ -144,13 +137,6 @@ export function Header() {
             >
               <Home size={16} />
               <span className="text-xs">Home</span>
-            </Link>
-            <Link
-              href="/products"
-              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
-            >
-              <Package size={16} />
-              <span className="text-xs">Products</span>
             </Link>
             <Link
               href="/peptides"

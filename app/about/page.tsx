@@ -24,9 +24,23 @@ export default function AboutPage() {
               DARK PINO PEPTIDES
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"></div>
-            <p className="text-lg lg:text-xl text-gray-400 font-light">
+            <p className="text-lg lg:text-xl text-gray-400 font-light mb-8">
               Advanced Pharmaceutical Research Solutions
             </p>
+            
+            {/* Pharmaceutical Research Video */}
+            <div className="max-w-2xl mx-auto rounded-lg overflow-hidden shadow-lg border border-slate-700/50">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto"
+              >
+                <source src="/videos/pharmaceutical-research.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       </div>

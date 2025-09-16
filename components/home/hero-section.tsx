@@ -88,31 +88,20 @@ export function HeroSection() {
           />
         </div>
 
-        {/* Subtitle - Animated with Electric Border */}
-        <div className="mb-4 sm:mb-6 md:mb-8">
-          <ElectricBorder
-            color="#7df9ff"
-            speed={1.2}
-            chaos={0.4}
-            thickness={2}
-            style={{ borderRadius: 8 }}
-            className="inline-block"
-          >
-            <div className="bg-white bg-opacity-100 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-center max-w-xs sm:max-w-lg md:max-w-2xl mx-auto font-medium shadow-lg border border-gray-200">
-              <SplitText
-                text="Premium research compounds for advanced scientific exploration"
-                className="text-sm sm:text-base md:text-lg lg:text-xl"
-                delay={50}
-                duration={0.4}
-                ease="power3.out"
-                splitType="words"
-                from={{ opacity: 0, y: 20 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.2}
-                autoStart={true}
-              />
-            </div>
-          </ElectricBorder>
+        {/* Subtitle - Clean White Text */}
+        <div className="mb-4 sm:mb-6 md:mb-8 text-center max-w-xs sm:max-w-lg md:max-w-2xl mx-auto">
+          <SplitText
+            text="Premium research compounds for advanced scientific exploration"
+            className="text-white text-sm sm:text-base md:text-lg lg:text-xl font-medium drop-shadow-lg"
+            delay={50}
+            duration={0.4}
+            ease="power3.out"
+            splitType="words"
+            from={{ opacity: 0, y: 20 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.2}
+            autoStart={true}
+          />
         </div>
 
         {/* CTA Buttons */}
