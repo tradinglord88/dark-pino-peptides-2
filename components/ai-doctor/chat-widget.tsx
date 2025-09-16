@@ -1,12 +1,19 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { ChatInterface } from './chat-interface'
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  
+  // Only show Dr. Pino on products and peptides pages
+  const showOnPage = pathname === '/products' || pathname === '/peptides'
+  
+  if (!showOnPage) return null
 
   return (
     <>
