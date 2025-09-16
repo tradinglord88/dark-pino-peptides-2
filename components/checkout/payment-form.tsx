@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 interface PaymentFormProps {
   onSuccess: () => void
   onError: (error: string) => void
-  onPaymentStart?: () => Promise<any>
+  onPaymentStart?: () => Promise<unknown>
 }
 
 export function PaymentForm({ onSuccess, onError, onPaymentStart }: PaymentFormProps) {

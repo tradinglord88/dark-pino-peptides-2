@@ -21,7 +21,7 @@ export default function CheckoutPage() {
   const [showShippingForm, setShowShippingForm] = useState(false)
   const [shippingInfo, setShippingInfo] = useState<ShippingInfo | null>(null)
   const { items, getTotal, clearCart } = useCartStore()
-  const { user, profile } = useAuthStore()
+  const { user } = useAuthStore()
   const router = useRouter()
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function CheckoutPage() {
     }
   }, [items, getTotal, router, paymentMethod])
 
-  const createOrder = async (paymentData: any) => {
+  const createOrder = async (paymentData: Record<string, unknown>) => {
     try {
       const orderPayload = {
         user_id: user?.id || null,
@@ -107,7 +107,7 @@ export default function CheckoutPage() {
   const handlePaymentSuccess = async (signature?: string) => {
     try {
       // Create order record in database
-      const paymentData: any = {}
+      const paymentData: Record<string, unknown> = {}
       
       if (paymentMethod === 'solana' && signature) {
         paymentData.solana_signature = signature
@@ -128,19 +128,6 @@ export default function CheckoutPage() {
   const handleStripePayment = async () => {
     // For Stripe, we need to create the order first, then initiate payment
     try {
-      // Extract shipping info from Stripe's AddressElement if available
-      const stripeShippingInfo = shippingInfo || {
-        firstName: '',
-        lastName: '',
-        email: user?.email || '',
-        phone: '',
-        address: '',
-        city: '',
-        state: '',
-        postalCode: '',
-        country: 'US'
-      }
-
       const paymentData = {
         stripe_session_id: clientSecret // Will be updated by webhook
       }
