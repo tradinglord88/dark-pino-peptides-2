@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     const { data: order, error: orderError } = await supabase
       .from('orders')
-      .insert(orderData)
+      .insert(orderData as any)
       .select()
       .single()
 
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
 
     // Create order items
     const orderItems: InsertOrderItem[] = items.map((item: any) => ({
-      order_id: order.id,
+      order_id: (order as any)?.id,
       product_id: item.product.id,
       product_name: item.product.name,
       quantity: item.quantity,
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
 
     // Create shipping address
     const shippingData: InsertShippingAddress = {
-      order_id: order.id,
+      order_id: order?.id,
       first_name: shipping_info.firstName,
       last_name: shipping_info.lastName,
       email: shipping_info.email,
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ 
       success: true, 
-      order_id: order.id,
+      order_id: order?.id,
       order 
     })
 

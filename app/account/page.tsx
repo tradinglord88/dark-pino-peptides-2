@@ -85,7 +85,7 @@ export default function AccountPage() {
           *,
           subscription_plans (*)
         `)
-        .eq('user_id', user?.id)
+        .eq('user_id', user?.id || '')
         .order('created_at', { ascending: false })
 
       if (error) {
@@ -97,7 +97,7 @@ export default function AccountPage() {
       
       // Load deliveries for active subscriptions
       if (subscriptionsData && subscriptionsData.length > 0) {
-        loadDeliveries(subscriptionsData.map(s => s.id))
+        loadDeliveries(subscriptionsData.map((s: any) => s.id))
       }
     } catch (error) {
       console.error('Error in loadSubscriptions:', error)

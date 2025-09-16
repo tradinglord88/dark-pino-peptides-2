@@ -3,11 +3,12 @@ import { supabase } from '@/lib/supabase/server'
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { status, ...updates } = await request.json()
-    const subscriptionId = params.id
+    const { id } = await params
+    const subscriptionId = id
 
     if (!subscriptionId) {
       return NextResponse.json({ error: 'Subscription ID is required' }, { status: 400 })
@@ -53,10 +54,11 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const subscriptionId = params.id
+    const { id } = await params
+    const subscriptionId = id
 
     if (!subscriptionId) {
       return NextResponse.json({ error: 'Subscription ID is required' }, { status: 400 })
