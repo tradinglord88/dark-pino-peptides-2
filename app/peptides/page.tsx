@@ -51,30 +51,6 @@ export default function PeptidesPage() {
         </div>
       </div>
 
-      {/* Featured Video Section */}
-      <div className="bg-[#0a0a1a] py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-8">
-              Premium Research Peptides in Action
-            </h2>
-            <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <video
-                controls
-                className="w-full h-auto"
-                poster="/images/video-poster.jpg"
-              >
-                <source src="/videos/peptides-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <p className="text-center text-gray-400 mt-6 text-sm md:text-base">
-              Discover the science behind our premium research peptides and their applications in advanced scientific research.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Products Section */}
       <div className="bg-[#0a0a1a] py-12">
         <div className="container mx-auto px-4">
