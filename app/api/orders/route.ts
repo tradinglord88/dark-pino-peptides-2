@@ -51,6 +51,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    if (!order) {
+      console.error('Order was not created')
+      return NextResponse.json(
+        { error: 'Failed to create order' },
+        { status: 500 }
+      )
+    }
+
     // Create order items
     const orderItems: InsertOrderItem[] = items.map((item: any) => ({
       order_id: order.id,
