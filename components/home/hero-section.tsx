@@ -12,20 +12,8 @@ export function HeroSection() {
     <div className="relative min-h-screen text-white overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0">
-        {/* Video element */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-          {/* Fallback for browsers that don't support video */}
-        </video>
-        
-        {/* Fallback gradient background for loading/unsupported browsers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-teal-900 to-cyan-950">
+        {/* Fallback gradient background - positioned behind video */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-indigo-950 via-teal-900 to-cyan-950">
           {/* Overlay pattern for DNA-like texture */}
           <div className="absolute inset-0 opacity-30">
             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 via-transparent to-purple-500/20" />
@@ -33,8 +21,23 @@ export function HeroSection() {
           </div>
         </div>
         
-        {/* Dark overlay for text readability over video */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+        {/* Video element - positioned above fallback */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 z-10 w-full h-full object-cover"
+          onError={(e) => console.log('Video error:', e)}
+          onLoadedData={() => console.log('Video loaded successfully')}
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Dark overlay for text readability - positioned above video */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
       </div>
 
 
