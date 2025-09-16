@@ -146,7 +146,7 @@ export async function PUT(request: NextRequest) {
     if (solana_signature) updateData.solana_signature = solana_signature
     if (etransfer_reference) updateData.etransfer_reference = etransfer_reference
 
-    let query = supabase.from('orders').update(updateData)
+    let query = supabase.from('orders').update(updateData as any)
     
     // Allow finding by order_id or stripe_session_id
     if (order_id) {
