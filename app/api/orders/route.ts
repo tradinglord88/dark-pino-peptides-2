@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
 
     const { error: itemsError } = await supabase
       .from('order_items')
-      .insert(orderItems)
+      .insert(orderItems as any)
 
     if (itemsError) {
       console.error('Error creating order items:', itemsError)
