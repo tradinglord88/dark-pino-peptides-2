@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles, User, LogIn, Info } from 'lucide-react'
+import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles, User, LogIn, Info, Activity } from 'lucide-react'
 import { useCartStore } from '@/stores/cart-store'
 import { useAuthStore } from '@/stores/auth-store'
 import { WalletButton } from '@/components/wallet/wallet-button'
@@ -72,6 +72,13 @@ export function Header() {
             >
               <Sparkles size={18} />
               <span>Skincare</span>
+            </Link>
+            <Link
+              href="/hormone"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Activity size={18} />
+              <span>Hormone</span>
             </Link>
             <Link
               href="/about"
@@ -158,6 +165,13 @@ export function Header() {
             >
               <Sparkles size={16} />
               <span className="text-xs">Skincare</span>
+            </Link>
+            <Link
+              href="/hormone"
+              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
+            >
+              <Activity size={16} />
+              <span className="text-xs">Hormone</span>
             </Link>
           </nav>
         </div>
