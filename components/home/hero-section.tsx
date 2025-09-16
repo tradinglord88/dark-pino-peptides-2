@@ -10,9 +10,21 @@ import ElectricBorder from '@/components/ui/electric-border'
 export function HeroSection() {
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
-      {/* DNA Background - Original Dark Pino Style */}
+      {/* Video Background */}
       <div className="absolute inset-0">
-        {/* Fallback gradient background inspired by DNA visualization */}
+        {/* Video element */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+        </video>
+        
+        {/* Fallback gradient background for loading/unsupported browsers */}
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-teal-900 to-cyan-950">
           {/* Overlay pattern for DNA-like texture */}
           <div className="absolute inset-0 opacity-30">
@@ -21,19 +33,8 @@ export function HeroSection() {
           </div>
         </div>
         
-        {/* Custom background image (when dna-background.png exists) */}
-        <div className="absolute inset-0 opacity-80" id="custom-bg">
-          <Image
-            src="/images/dna-background.png"
-            alt="DNA Background"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </div>
-        
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
+        {/* Dark overlay for text readability over video */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
       </div>
 
 
