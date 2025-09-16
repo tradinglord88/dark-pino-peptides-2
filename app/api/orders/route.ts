@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase/server'
-import { InsertOrder, InsertOrderItem, InsertShippingAddress } from '@/lib/supabase/types'
+import { InsertOrder, InsertOrderItem, InsertShippingAddress, Order } from '@/lib/supabase/types'
 
 export async function POST(request: NextRequest) {
   try {
@@ -59,9 +59,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // TypeScript type assertion to fix 'never' type
+    const typedOrder = order as Order
+
     // Create order items
     const orderItems: InsertOrderItem[] = items.map((item: any) => ({
-      order_id: order.id,
+      order_id: typedOrder.id,
       product_id: item.product.id,
       product_name: item.product.name,
       quantity: item.quantity,
@@ -75,7 +78,7 @@ export async function POST(request: NextRequest) {
     if (itemsError) {
       console.error('Error creating order items:', itemsError)
       // Try to clean up the order
-      await supabase.from('orders').delete().eq('id', order.id)
+      await supabase.from('orders').delete().eq('id', typedOrder.id)
       return NextResponse.json(
         { error: 'Failed to create order items' },
         { status: 500 }
@@ -84,7 +87,7 @@ export async function POST(request: NextRequest) {
 
     // Create shipping address
     const shippingData: InsertShippingAddress = {
-      order_id: order.id,
+      order_id: typedOrder.id,
       first_name: shipping_info.firstName,
       last_name: shipping_info.lastName,
       email: shipping_info.email,
@@ -103,7 +106,7 @@ export async function POST(request: NextRequest) {
     if (shippingError) {
       console.error('Error creating shipping address:', shippingError)
       // Try to clean up the order and items
-      await supabase.from('orders').delete().eq('id', order.id)
+      await supabase.from('orders').delete().eq('id', typedOrder.id)
       return NextResponse.json(
         { error: 'Failed to create shipping address' },
         { status: 500 }
@@ -112,8 +115,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ 
       success: true, 
-      order_id: order.id,
-      order 
+      order_id: typedOrder.id,
+      order: typedOrder 
     })
 
   } catch (error) {
