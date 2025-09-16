@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles, User, LogIn } from 'lucide-react'
+import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles, User, LogIn, Info } from 'lucide-react'
 import { useCartStore } from '@/stores/cart-store'
 import { useAuthStore } from '@/stores/auth-store'
 
@@ -78,6 +78,13 @@ export function Header() {
             >
               <Sparkles size={18} />
               <span>Skincare</span>
+            </Link>
+            <Link
+              href="/about"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Info size={18} />
+              <span>About</span>
             </Link>
           </nav>
 
