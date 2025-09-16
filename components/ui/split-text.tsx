@@ -119,7 +119,7 @@ export default function SplitText({
       ...to,
       transition: {
         duration,
-        ease: ease === 'power3.out' ? [0.215, 0.61, 0.355, 1] : ease,
+        ease: ease === 'power3.out' ? [0.215, 0.61, 0.355, 1] : ease as any,
       }
     }
   }

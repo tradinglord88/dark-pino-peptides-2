@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
     const currentPeriodStart = now.toISOString()
     
     let currentPeriodEnd: Date
-    switch (plan.billing_interval) {
+    switch ((plan as any).billing_interval) {
       case 'monthly':
         currentPeriodEnd = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate())
         break
@@ -76,13 +76,13 @@ export async function POST(request: NextRequest) {
       .insert({
         user_id,
         plan_id,
-        status: plan.trial_days > 0 ? 'trial' : 'active',
+        status: (plan as any).trial_days > 0 ? 'trial' : 'active',
         current_period_start: currentPeriodStart,
         current_period_end: currentPeriodEnd.toISOString(),
-        trial_end: plan.trial_days > 0 
-          ? new Date(now.getTime() + plan.trial_days * 24 * 60 * 60 * 1000).toISOString()
+        trial_end: (plan as any).trial_days > 0 
+          ? new Date(now.getTime() + (plan as any).trial_days * 24 * 60 * 60 * 1000).toISOString()
           : null
-      })
+      } as any)
       .select()
       .single()
 
@@ -95,12 +95,12 @@ export async function POST(request: NextRequest) {
     await supabase
       .from('subscription_preferences')
       .insert({
-        subscription_id: subscription.id,
+        subscription_id: (subscription as any).id,
         preferred_delivery_day: 1,
         skip_months: [],
         special_instructions: null,
         allergy_info: null
-      })
+      } as any)
 
     return NextResponse.json({ subscription })
   } catch (error) {

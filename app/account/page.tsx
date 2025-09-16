@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { User, Package, Clock, CheckCircle, XCircle, Settings, LogOut, RefreshCw, Calendar, Truck } from 'lucide-react'
+import { Package, Clock, CheckCircle, XCircle, Settings, LogOut, RefreshCw, Truck } from 'lucide-react'
 import { useAuthStore } from '@/stores/auth-store'
 import { supabase } from '@/lib/supabase/client'
 import { Order, OrderItem, ShippingAddress, SubscriptionPlan, UserSubscription, SubscriptionDelivery } from '@/lib/supabase/types'

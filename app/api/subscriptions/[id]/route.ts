@@ -32,7 +32,8 @@ export async function PATCH(
     // Update subscription
     const { data: subscription, error } = await supabase
       .from('user_subscriptions')
-      .update(updateData)
+      // @ts-expect-error - Supabase type inference issue with server client
+      .update(updateData as any)
       .eq('id', subscriptionId)
       .select(`
         *,
@@ -67,10 +68,11 @@ export async function DELETE(
     // Cancel subscription instead of deleting
     const { data: subscription, error } = await supabase
       .from('user_subscriptions')
+      // @ts-expect-error - Supabase type inference issue with server client
       .update({
         status: 'cancelled',
         cancelled_at: new Date().toISOString()
-      })
+      } as any)
       .eq('id', subscriptionId)
       .select()
       .single()

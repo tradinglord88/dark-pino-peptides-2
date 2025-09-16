@@ -66,9 +66,14 @@ export async function POST(
       return NextResponse.json({ error: 'Failed to create delivery' }, { status: 500 })
     }
 
+    if (!delivery) {
+      console.error('Delivery was not created')
+      return NextResponse.json({ error: 'Failed to create delivery' }, { status: 500 })
+    }
+
     // Create delivery items
     const deliveryItems = items.map((item: any) => ({
-      delivery_id: delivery.id,
+      delivery_id: (delivery as any).id,
       product_id: item.product_id,
       product_name: item.product_name,
       quantity: item.quantity,
@@ -77,7 +82,7 @@ export async function POST(
 
     const { error: itemsError } = await supabase
       .from('subscription_delivery_items')
-      .insert(deliveryItems)
+      .insert(deliveryItems as any)
 
     if (itemsError) {
       console.error('Error creating delivery items:', itemsError)
@@ -91,7 +96,7 @@ export async function POST(
         *,
         subscription_delivery_items (*)
       `)
-      .eq('id', delivery.id)
+      .eq('id', (delivery as any).id)
       .single()
 
     if (fetchError) {

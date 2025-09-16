@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { X, CheckCircle2, AlertTriangle } from 'lucide-react'
+import { CheckCircle2, AlertTriangle } from 'lucide-react'
 import { useTermsStore } from '@/stores/terms-store'
 import Link from 'next/link'
 
@@ -10,7 +10,6 @@ export function TermsModal() {
     isModalOpen,
     isHydrated,
     agreeToTerms,
-    hideModal,
   } = useTermsStore()
 
   const [hasReadTerms, setHasReadTerms] = useState(false)
