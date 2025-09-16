@@ -41,22 +41,8 @@ export function HeroSection() {
       </div>
 
 
-      {/* Hero Content - Exact Original Layout */}
-      <div className="relative z-20 min-h-screen flex flex-col justify-center items-center px-4 py-8">
-        {/* Mascot above title */}
-        <div className="text-center mb-4 sm:mb-6 animate-fade-in-up">
-          <div className="animate-float">
-            <Image
-              src="/images/mascots/dark-pino-mascot.png"
-              alt="Dark Pino Mascot"
-              width={720}
-              height={1280}
-              className="drop-shadow-2xl mx-auto w-20 h-auto sm:w-24 md:w-28 lg:w-32"
-              priority
-            />
-          </div>
-        </div>
-
+      {/* Hero Content - Positioned higher on screen */}
+      <div className="relative z-20 min-h-screen flex flex-col justify-start items-center px-4 pt-16 pb-8">
         {/* Main Title - Animated with Electric Letter Effects */}
         <div className="text-center mb-6 sm:mb-8">
           <SplitText
@@ -72,6 +58,21 @@ export function HeroSection() {
             autoStart={true}
             onLetterAnimationComplete={() => console.log('DARK PINO animation complete!')}
           />
+          
+          {/* Mascot between DARK PINO and PEPTIDES */}
+          <div className="text-center my-4 animate-fade-in-up">
+            <div className="animate-float">
+              <Image
+                src="/images/mascots/dark-pino-mascot.png"
+                alt="Dark Pino Mascot"
+                width={720}
+                height={1280}
+                className="drop-shadow-2xl mx-auto w-20 h-auto sm:w-24 md:w-28 lg:w-32"
+                priority
+              />
+            </div>
+          </div>
+          
           <SplitText
             text="PEPTIDES"
             className="hero-subtitle text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-widest text-white/90 drop-shadow-lg block mt-2"
@@ -128,7 +129,7 @@ export function HeroSection() {
       </div>
 
       {/* Feature Cards Section - Moved below main content */}
-      <div className="relative z-20 -mt-48">
+      <div className="relative z-20 -mt-96">
         <FeatureCards />
       </div>
 
