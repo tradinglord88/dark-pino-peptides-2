@@ -128,7 +128,7 @@ export function HeroSection() {
       </div>
 
       {/* Feature Cards Section - Moved below main content */}
-      <div className="relative z-20 -mt-32">
+      <div className="relative z-20 -mt-48">
         <FeatureCards />
       </div>
 
