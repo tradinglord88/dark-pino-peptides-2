@@ -6,6 +6,14 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const { status, ...updates } = await request.json()
     const { id } = await params
     const subscriptionId = id
@@ -32,7 +40,6 @@ export async function PATCH(
     // Update subscription
     const { data: subscription, error } = await supabase
       .from('user_subscriptions')
-      // @ts-expect-error - Supabase type inference issue with server client
       .update(updateData as any)
       .eq('id', subscriptionId)
       .select(`
@@ -58,6 +65,14 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const { id } = await params
     const subscriptionId = id
 
@@ -68,7 +83,6 @@ export async function DELETE(
     // Cancel subscription instead of deleting
     const { data: subscription, error } = await supabase
       .from('user_subscriptions')
-      // @ts-expect-error - Supabase type inference issue with server client
       .update({
         status: 'cancelled',
         cancelled_at: new Date().toISOString()

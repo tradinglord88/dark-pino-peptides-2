@@ -3,6 +3,14 @@ import { supabase } from '@/lib/supabase/server'
 
 export async function GET(request: NextRequest) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('user_id')
 
@@ -34,6 +42,14 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const { user_id, plan_id } = await request.json()
 
     if (!user_id || !plan_id) {

@@ -4,6 +4,14 @@ import { InsertOrder, InsertOrderItem, InsertShippingAddress, Order } from '@/li
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const body = await request.json()
     const {
       user_id,
@@ -130,6 +138,14 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const body = await request.json()
     const { order_id, status, stripe_session_id, solana_signature, etransfer_reference } = body
 
@@ -146,7 +162,6 @@ export async function PUT(request: NextRequest) {
     if (solana_signature) updateData.solana_signature = solana_signature
     if (etransfer_reference) updateData.etransfer_reference = etransfer_reference
 
-    // @ts-expect-error - Supabase type inference issue with client vs server
     let query = supabase.from('orders').update(updateData as any)
     
     // Allow finding by order_id or stripe_session_id

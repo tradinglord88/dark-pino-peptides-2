@@ -6,6 +6,14 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const { id } = await params
     const subscriptionId = id
 
@@ -39,6 +47,14 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const { id } = await params
     const subscriptionId = id
     const { delivery_date, total_amount, items } = await request.json()

@@ -3,6 +3,14 @@ import { supabase } from '@/lib/supabase/server'
 
 export async function GET() {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service is not configured' },
+        { status: 503 }
+      )
+    }
+
     const { data: plans, error } = await supabase
       .from('subscription_plans')
       .select('*')
