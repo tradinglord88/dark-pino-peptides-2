@@ -7,6 +7,7 @@ This is a modern e-commerce platform for premium research peptides built with [N
 - Electric border effects and split text animations  
 - Enhanced hero section and peptides page layout
 - Build errors resolved for deployment
+- Next.js 15 route handlers updated
 
 ## Getting Started
 
