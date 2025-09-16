@@ -7,6 +7,7 @@ import { ToastContainer } from '@/components/ui/toast'
 import TermsPopup from '@/components/ui/terms-popup'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { ChatWidget } from '@/components/ai-doctor/chat-widget'
+import { WalletContextProvider } from '@/components/wallet/wallet-provider'
 import './globals.css'
 
 const inter = Inter({
@@ -64,14 +65,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${permanentMarker.variable} font-sans antialiased bg-slate-950 text-white min-h-screen`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <CartDrawer />
-        <TermsPopup />
-        <CookieConsent />
-        <ChatWidget />
-        <ToastContainer />
+        <WalletContextProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CartDrawer />
+          <TermsPopup />
+          <CookieConsent />
+          <ChatWidget />
+          <ToastContainer />
+        </WalletContextProvider>
       </body>
     </html>
   )

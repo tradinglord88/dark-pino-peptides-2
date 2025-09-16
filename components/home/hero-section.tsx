@@ -29,6 +29,7 @@ export function HeroSection() {
           playsInline
           preload="auto"
           className="absolute inset-0 z-10 w-full h-full object-cover"
+          style={{ objectPosition: 'center center' }}
           onError={(e) => console.log('Video error:', e)}
           onLoadedData={() => console.log('Video loaded successfully')}
         >
@@ -42,12 +43,12 @@ export function HeroSection() {
 
 
       {/* Hero Content - Positioned higher on screen */}
-      <div className="relative z-20 min-h-screen flex flex-col justify-start items-center px-4 pt-16 pb-8">
+      <div className="relative z-20 min-h-screen flex flex-col justify-start items-center px-4 pt-8 sm:pt-16 pb-8">
         {/* Main Title - Animated with Electric Letter Effects */}
-        <div className="text-center mb-6 sm:mb-8">
+        <div className="text-center mb-4 sm:mb-6 md:mb-8">
           <SplitText
             text="DARK PINO"
-            className="text-3d-yellow hero-title text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-permanent-marker mb-2 tracking-wider leading-tight"
+            className="text-3d-yellow hero-title text-3xl xs:text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-permanent-marker mb-2 tracking-wider leading-tight"
             delay={150}
             duration={0.8}
             ease="power3.out"
@@ -60,22 +61,22 @@ export function HeroSection() {
           />
           
           {/* Mascot between DARK PINO and PEPTIDES */}
-          <div className="text-center my-4 animate-fade-in-up">
+          <div className="text-center my-3 sm:my-4 animate-fade-in-up">
             <div className="animate-float">
               <Image
                 src="/images/mascots/dark-pino-mascot.png"
                 alt="Dark Pino Mascot"
                 width={720}
                 height={1280}
-                className="drop-shadow-2xl mx-auto w-20 h-auto sm:w-24 md:w-28 lg:w-32"
+                className="drop-shadow-2xl mx-auto w-16 h-auto sm:w-20 md:w-24 lg:w-28 xl:w-32"
                 priority
               />
             </div>
           </div>
           
           <SplitText
-            text="PEPTIDES"
-            className="hero-subtitle text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-widest text-white/90 drop-shadow-lg block mt-2"
+            text="RESEARCH PEPTIDES"
+            className="hero-subtitle text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-bold tracking-widest text-white/90 drop-shadow-lg block mt-2"
             delay={80}
             duration={0.6}
             ease="power3.out"
@@ -88,7 +89,7 @@ export function HeroSection() {
         </div>
 
         {/* Subtitle - Animated with Electric Border */}
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-4 sm:mb-6 md:mb-8">
           <ElectricBorder
             color="#7df9ff"
             speed={1.2}

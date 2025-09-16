@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { ShoppingCart, Home, Package, TestTube, Droplet, Sparkles, User, LogIn, Info } from 'lucide-react'
 import { useCartStore } from '@/stores/cart-store'
 import { useAuthStore } from '@/stores/auth-store'
+import { WalletButton } from '@/components/wallet/wallet-button'
 
 export function Header() {
   const { getItemCount, toggleCart, isHydrated } = useCartStore()
@@ -14,7 +15,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-30 bg-black/95 backdrop-blur-lg border-b border-gray-800/50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
@@ -43,7 +44,7 @@ export function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <Link
               href="/"
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
@@ -70,7 +71,7 @@ export function Header() {
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
             >
               <Droplet size={18} />
-              <span>Bacteriostatic Water</span>
+              <span className="whitespace-nowrap">Bac Water</span>
             </Link>
             <Link
               href="/skincare"
@@ -89,7 +90,10 @@ export function Header() {
           </nav>
 
           {/* User & Cart Actions */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 lg:space-x-3">
+            {/* Wallet Connection */}
+            <WalletButton />
+
             {/* User Account */}
             {authHydrated && user ? (
               <Link
