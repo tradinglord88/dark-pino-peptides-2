@@ -9,11 +9,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid amount' }, { status: 400 })
     }
 
-    // Create Payment Intent with crypto support
+    // Create Payment Intent with automatic payment methods
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amount * 100), // Convert to cents
       currency,
-      payment_method_types: ['card'], // Enable card and crypto payments
+      automatic_payment_methods: {
+        enabled: true, // Enable automatic payment method handling
+      },
       metadata,
     })
 
