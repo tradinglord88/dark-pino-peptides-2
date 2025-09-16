@@ -105,6 +105,44 @@ export interface Database {
           created_at?: string
         }
       }
+      products: {
+        Row: {
+          id: string
+          name: string
+          description: string
+          price: number
+          category: string
+          stock: number
+          image_url: string
+          is_featured: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description: string
+          price: number
+          category: string
+          stock?: number
+          image_url: string
+          is_featured?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string
+          price?: number
+          category?: string
+          stock?: number
+          image_url?: string
+          is_featured?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+      }
       shipping_addresses: {
         Row: {
           id: string
@@ -382,6 +420,7 @@ export interface Database {
 export type User = Database['public']['Tables']['users']['Row']
 export type Order = Database['public']['Tables']['orders']['Row']
 export type OrderItem = Database['public']['Tables']['order_items']['Row']
+export type Product = Database['public']['Tables']['products']['Row']
 export type ShippingAddress = Database['public']['Tables']['shipping_addresses']['Row']
 export type SubscriptionPlan = Database['public']['Tables']['subscription_plans']['Row']
 export type UserSubscription = Database['public']['Tables']['user_subscriptions']['Row']
@@ -393,6 +432,7 @@ export type SubscriptionPreferences = Database['public']['Tables']['subscription
 export type InsertUser = Database['public']['Tables']['users']['Insert']
 export type InsertOrder = Database['public']['Tables']['orders']['Insert']
 export type InsertOrderItem = Database['public']['Tables']['order_items']['Insert']
+export type InsertProduct = Database['public']['Tables']['products']['Insert']
 export type InsertShippingAddress = Database['public']['Tables']['shipping_addresses']['Insert']
 export type InsertSubscriptionPlan = Database['public']['Tables']['subscription_plans']['Insert']
 export type InsertUserSubscription = Database['public']['Tables']['user_subscriptions']['Insert']
@@ -403,6 +443,7 @@ export type InsertSubscriptionPreferences = Database['public']['Tables']['subscr
 
 export type UpdateUser = Database['public']['Tables']['users']['Update']
 export type UpdateOrder = Database['public']['Tables']['orders']['Update']
+export type UpdateProduct = Database['public']['Tables']['products']['Update']
 export type UpdateUserSubscription = Database['public']['Tables']['user_subscriptions']['Update']
 export type UpdateSubscriptionDelivery = Database['public']['Tables']['subscription_deliveries']['Update']
 export type UpdateSubscriptionPreferences = Database['public']['Tables']['subscription_preferences']['Update']

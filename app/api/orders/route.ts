@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     const { data: order, error: orderError } = await supabase
       .from('orders')
-      .insert(orderData)
+      .insert(orderData as any)
       .select()
       .single()
 
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
 
     const { error: itemsError } = await supabase
       .from('order_items')
-      .insert(orderItems)
+      .insert(orderItems as any)
 
     if (itemsError) {
       console.error('Error creating order items:', itemsError)
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
 
     const { error: shippingError } = await supabase
       .from('shipping_addresses')
-      .insert(shippingData)
+      .insert(shippingData as any)
 
     if (shippingError) {
       console.error('Error creating shipping address:', shippingError)
