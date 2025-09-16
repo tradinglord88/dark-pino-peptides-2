@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase/server'
+import { supabase } from '@/lib/supabase/client'
 import { InsertOrder, InsertOrderItem, InsertShippingAddress, Order } from '@/lib/supabase/types'
 
 export async function POST(request: NextRequest) {
