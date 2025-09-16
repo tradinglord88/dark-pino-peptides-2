@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dark Pino Peptides
+
+This is a modern e-commerce platform for premium research peptides built with [Next.js](https://nextjs.org).
+
+## Latest Features
+- AI Doctor (Dr. Pino) with OpenAI GPT-4 integration
+- Electric border effects and split text animations  
+- Enhanced hero section and peptides page layout
+- Build errors resolved for deployment
 
 ## Getting Started
 
