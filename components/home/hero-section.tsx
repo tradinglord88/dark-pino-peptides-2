@@ -42,8 +42,8 @@ export function HeroSection() {
       </div>
 
 
-      {/* Hero Content - Positioned higher on screen */}
-      <div className="relative z-20 min-h-screen flex flex-col justify-start items-center px-4 pt-8 sm:pt-16 pb-8">
+      {/* Hero Content - Centered vertically on mobile, positioned higher on larger screens */}
+      <div className="relative z-20 min-h-screen flex flex-col justify-center sm:justify-start items-center px-4 pt-4 sm:pt-16 pb-8">
         {/* Main Title - Animated with Electric Letter Effects */}
         <div className="text-center mb-4 sm:mb-6 md:mb-8">
           <SplitText
@@ -118,8 +118,8 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Feature Cards Section - Moved below main content */}
-      <div className="relative z-20 -mt-32 sm:-mt-48 md:-mt-64 lg:-mt-80 xl:-mt-96">
+      {/* Feature Cards Section - Moved below main content and extended to footer */}
+      <div className="relative z-20 -mt-32 sm:-mt-48 md:-mt-64 lg:-mt-80 xl:-mt-96 pb-0">
         <FeatureCards />
       </div>
 

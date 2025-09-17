@@ -90,7 +90,7 @@ export function Header() {
           </nav>
 
           {/* User & Cart Actions */}
-          <div className="flex items-center space-x-2 lg:space-x-3">
+          <div className="flex items-center space-x-3 lg:space-x-4">
             {/* Wallet Connection */}
             <WalletButton />
 
@@ -136,42 +136,42 @@ export function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden pb-4">
-          <nav className="flex items-center space-x-3 overflow-x-auto scrollbar-hide px-1">
+        <div className="md:hidden py-3 border-t border-gray-800/30 mt-2">
+          <nav className="flex items-center justify-between px-2 overflow-x-auto scrollbar-hide">
             <Link
               href="/"
-              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
+              className="flex flex-col items-center space-y-1.5 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit px-2 py-1"
             >
-              <Home size={16} />
-              <span className="text-xs">Home</span>
+              <Home size={18} />
+              <span className="text-xs font-medium">Home</span>
             </Link>
             <Link
               href="/peptides"
-              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
+              className="flex flex-col items-center space-y-1.5 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit px-2 py-1"
             >
-              <TestTube size={16} />
-              <span className="text-xs">Peptides</span>
+              <TestTube size={18} />
+              <span className="text-xs font-medium">Peptides</span>
             </Link>
             <Link
               href="/bacteriostatic-water"
-              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
+              className="flex flex-col items-center space-y-1.5 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit px-2 py-1"
             >
-              <Droplet size={16} />
-              <span className="text-xs">Water</span>
+              <Droplet size={18} />
+              <span className="text-xs font-medium">Water</span>
             </Link>
             <Link
               href="/skincare"
-              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
+              className="flex flex-col items-center space-y-1.5 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit px-2 py-1"
             >
-              <Sparkles size={16} />
-              <span className="text-xs">Skincare</span>
+              <Sparkles size={18} />
+              <span className="text-xs font-medium">Skincare</span>
             </Link>
             <Link
               href="/hormone"
-              className="flex flex-col items-center space-y-1 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit"
+              className="flex flex-col items-center space-y-1.5 text-gray-300 hover:text-white transition-colors whitespace-nowrap min-w-fit px-2 py-1"
             >
-              <Activity size={16} />
-              <span className="text-xs">Hormone</span>
+              <Activity size={18} />
+              <span className="text-xs font-medium">Hormone</span>
             </Link>
           </nav>
         </div>
