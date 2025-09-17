@@ -1,5 +1,5 @@
 interface ProductBadgeProps {
-  badge: 'Best Seller' | 'Premium' | 'Trending' | 'New'
+  badge: 'Best Seller' | 'Premium' | 'Trending' | 'New' | 'Research Grade'
 }
 
 export function ProductBadge({ badge }: ProductBadgeProps) {
@@ -13,6 +13,8 @@ export function ProductBadge({ badge }: ProductBadgeProps) {
         return 'bg-gradient-to-r from-orange-500 to-pink-500 text-white'
       case 'New':
         return 'bg-gradient-to-r from-green-500 to-teal-400 text-white'
+      case 'Research Grade':
+        return 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
       default:
         return 'bg-gray-500 text-white'
     }
@@ -27,6 +29,7 @@ export function ProductBadge({ badge }: ProductBadgeProps) {
         {badge === 'Premium' && '💎'}
         {badge === 'Trending' && '📈'}
         {badge === 'New' && '✨'}
+        {badge === 'Research Grade' && '🧪'}
         {badge}
       </span>
     </div>
