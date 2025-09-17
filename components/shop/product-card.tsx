@@ -64,7 +64,11 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Name */}
-      <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+      <h3 className={`text-2xl font-bold mb-3 bg-clip-text text-transparent ${
+        product.category_tags.includes('Blend') 
+          ? 'bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400' 
+          : 'bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400'
+      }`}>
         {product.name}
       </h3>
 

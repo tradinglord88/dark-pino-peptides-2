@@ -130,6 +130,7 @@ export const useAuthStore = create<AuthStore>()(
         }
       },
 
+
       signOut: async () => {
         try {
           const supabase = getSupabase()

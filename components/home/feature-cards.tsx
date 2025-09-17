@@ -41,7 +41,7 @@ export function FeatureCards() {
         }} />
       </div>
       
-      <div className="relative container mx-auto px-4 py-8 lg:py-12">
+      <div className="relative container mx-auto px-4 py-6 lg:py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div 
@@ -67,7 +67,7 @@ export function FeatureCards() {
         </div>
         
         {/* Bottom accent line */}
-        <div className="mt-8 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+        <div className="mt-4 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
       </div>
     </div>
   )
