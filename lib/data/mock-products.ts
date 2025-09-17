@@ -6,7 +6,7 @@ export interface ProductData {
   image_url: string
   category_tags: string[]
   spec_tags: string[]
-  badge?: 'Best Seller' | 'Premium' | 'Trending' | 'New'
+  badge?: 'Best Seller' | 'Premium' | 'Trending' | 'New' | 'Research Grade'
   purity: string
   dosage: string
   stock: number
