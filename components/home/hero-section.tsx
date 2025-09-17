@@ -68,7 +68,7 @@ export function HeroSection() {
                 alt="Dark Pino Mascot"
                 width={720}
                 height={1280}
-                className="drop-shadow-2xl mx-auto w-16 h-auto sm:w-20 md:w-24 lg:w-28 xl:w-32"
+                className="drop-shadow-2xl mx-auto w-24 h-auto sm:w-32 md:w-40 lg:w-48 xl:w-56 max-w-[224px]"
                 priority
               />
             </div>

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black text-white -mt-6">
       {/* Trust Statement Section */}
       <div className="border-b border-gray-800 py-8">
         <div className="max-w-6xl mx-auto px-4 text-center">
@@ -102,6 +102,7 @@ export function Footer() {
               <li><Link href="/blog" className="hover:text-white transition-colors">Research Blog</Link></li>
             </ul>
           </div>
+
         </div>
       </div>
 

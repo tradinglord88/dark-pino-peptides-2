@@ -1,6 +1,10 @@
 'use client'
 
+import { useState } from 'react'
+import { TechnicalSupportPopup } from '@/components/ui/technical-support-popup'
+
 export function FeatureCards() {
+  const [isSupportPopupOpen, setIsSupportPopupOpen] = useState(false)
   const features = [
     {
       icon: (
@@ -32,7 +36,7 @@ export function FeatureCards() {
   ]
 
   return (
-    <div className="bg-black/95 backdrop-blur-sm border-t border-gray-800">
+    <div className="bg-black/95 backdrop-blur-sm border-t border-gray-800 pb-24 mb-0">
       {/* Subtle pattern overlay */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -41,11 +45,16 @@ export function FeatureCards() {
         }} />
       </div>
       
-      <div className="relative container mx-auto px-4 py-6 lg:py-8">
+      <div className="relative container mx-auto px-4 py-6 lg:py-8 pb-0">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}
+              onClick={() => {
+                if (feature.title === "ONLINE SUPPORT") {
+                  setIsSupportPopupOpen(true)
+                }
+              }}
               className="group text-center space-y-4 p-6 rounded-lg hover:bg-gray-800/30 transition-all duration-300 cursor-pointer border border-transparent hover:border-yellow-500/20"
             >
               {/* Icon */}
@@ -67,8 +76,14 @@ export function FeatureCards() {
         </div>
         
         {/* Bottom accent line */}
-        <div className="mt-4 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+        <div className="mt-4 mb-0 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
       </div>
+      
+      {/* Technical Support Popup */}
+      <TechnicalSupportPopup 
+        isOpen={isSupportPopupOpen} 
+        onClose={() => setIsSupportPopupOpen(false)} 
+      />
     </div>
   )
 }
