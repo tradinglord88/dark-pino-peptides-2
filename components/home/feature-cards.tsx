@@ -8,8 +8,8 @@ export function FeatureCards() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
         </svg>
       ),
-      title: "FREE DELIVERY",
-      description: "Any purchase of $200 or more qualifies for free delivery within the USA."
+      title: "WORLDWIDE SHIPPING",
+      description: "Fast and reliable shipping to locations worldwide with tracking included."
     },
     {
       icon: (

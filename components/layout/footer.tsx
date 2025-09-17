@@ -7,11 +7,31 @@ export function Footer() {
       {/* Trust Statement Section */}
       <div className="border-b border-gray-800 py-8">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-lg mb-2">
+          <p className="text-lg mb-4">
             darkpinopeptides.com is your trusted source for premium research peptides. All products are manufactured in 
             cGMP & ISO 9001 Certified Labs and all products are HPLC tested to ensure quality. Buy with 
             confidence from darkpinopeptides.com
           </p>
+          
+          <div className="bg-gray-900/50 rounded-lg p-4 mb-4 text-left max-w-4xl mx-auto">
+            <p className="text-sm text-gray-300 mb-3 font-medium text-center">
+              <strong className="text-yellow-400">IMPORTANT LEGAL DISCLAIMER</strong>
+            </p>
+            <div className="space-y-2 text-xs text-gray-400 leading-relaxed">
+              <p>
+                <strong className="text-white">Research Use Only:</strong> All products are sold for research, laboratory, or analytical purposes only, and are not for human consumption.
+              </p>
+              <p>
+                <strong className="text-white">Chemical Supplier:</strong> Dark Pino Peptides is a chemical supplier. Dark Pino Peptides is not a compounding pharmacy or chemical compounding facility as defined under 503A of the Federal Food, Drug, and Cosmetic act. Dark Pino Peptides is not an outsourcing facility as defined under 503B of the Federal Food, Drug, and Cosmetic act.
+              </p>
+              <p>
+                <strong className="text-white">FDA Statement:</strong> The statements made within this website have not been evaluated by the US Food and Drug Administration. The products we offer are not intended to diagnose, treat, cure or prevent any disease.
+              </p>
+              <p>
+                <strong className="text-red-400">Human/Animal Consumption Prohibited.</strong> Laboratory/In-Vitro Experimental Use Only.
+              </p>
+            </div>
+          </div>
           <p className="text-gray-400 text-sm">
             #PEPTIDES #RESEARCH #PREMIUM #DARKPINO #SCIENCE #INNOVATION
           </p>

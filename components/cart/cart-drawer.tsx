@@ -136,31 +136,9 @@ export function CartDrawer() {
 
                 {/* Shipping */}
                 <div className="flex justify-between text-gray-300">
-                  <span>
-                    Shipping
-                    {shipping === 0 && (
-                      <span className="text-green-400 text-sm ml-1">
-                        (Free!)
-                      </span>
-                    )}
-                  </span>
+                  <span>Shipping</span>
                   <span>{formatPrice(shipping)}</span>
                 </div>
-
-                {/* Free Shipping Progress */}
-                {shipping > 0 && (
-                  <div className="text-sm text-gray-400">
-                    Add {formatPrice(150 - subtotal)} more for free shipping
-                    <div className="w-full bg-slate-700/50 rounded-full h-2 mt-1">
-                      <div
-                        className="bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full transition-all"
-                        style={{
-                          width: `${Math.min((subtotal / 150) * 100, 100)}%`,
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
 
                 {/* Total */}
                 <div className="border-t border-slate-600/50 pt-4">
