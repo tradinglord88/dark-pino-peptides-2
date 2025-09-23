@@ -31,8 +31,6 @@ export default function SkincarePage() {
             Your browser does not support the video tag.
           </video>
 
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 z-20 bg-black/60"></div>
         </div>
 
         {/* Molecular pattern overlay */}
