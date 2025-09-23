@@ -95,12 +95,24 @@ export default function AboutPage() {
               <div className="bg-black/50 backdrop-blur rounded-lg p-6 lg:p-8 border border-gray-800">
                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
                   <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
-                  Research Excellence
+                  The Future of Medicine: Peptide Signaling
                 </h2>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Leading provider of pharmaceutical-grade peptides for laboratories, researchers, and academic institutions globally. 
-                  All compounds are synthesized and lyophilized in state-of-the-art facilities with purity exceeding 99%+. 
-                  Comprehensive catalog includes research peptides, custom synthesis, and analytical services.
+                  Peptides represent the future of medicine by harnessing your body's own signaling mechanisms. These naturally occurring
+                  biological messengers orchestrate healing, regeneration, and cellular communication throughout your system. Unlike traditional
+                  pharmaceuticals that force chemical changes, peptides work with your body's innate intelligence to restore balance and
+                  optimize function.
+                </p>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Your body produces thousands of peptides that regulate everything from tissue repair and immune response to metabolism
+                  and cognitive function. By supplementing with bioidentical peptides, we can amplify these natural healing signals,
+                  enabling your body to heal itself more effectively. This is precision medicine at the molecular level - targeted,
+                  natural, and working in harmony with your biological systems.
+                </p>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Dark Pino provides pharmaceutical-grade peptides with purity exceeding 99%+ for research institutions exploring these
+                  revolutionary therapeutic applications. Our comprehensive catalog supports groundbreaking research in regenerative medicine,
+                  longevity science, and cellular optimization.
                 </p>
                 
                 {/* Pharmaceutical Research Video */}
