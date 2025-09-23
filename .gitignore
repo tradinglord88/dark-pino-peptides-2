@@ -35,6 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large video files
-public/videos/hero-video.mp4
-public/videos/skincare-video.mov
+# Large video files are now compressed and included
+
+# Environment variables
+.env

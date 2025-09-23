@@ -7,17 +7,32 @@ export default function SkincarePage() {
     <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
       {/* Hero Section */}
       <div className="relative min-h-[500px] overflow-hidden">
-        {/* Laboratory Background Image */}
+        {/* Video Background */}
         <div className="absolute inset-0">
-          <Image
-            src="/images/laboratory.jpg"
-            alt="Research Laboratory"
-            fill
-            className="object-cover"
-            priority
-          />
+          {/* Fallback gradient background */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-pink-950 via-purple-900 to-blue-950">
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 via-transparent to-purple-500/20" />
+              <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/15 via-transparent to-blue-500/15" />
+            </div>
+          </div>
+
+          {/* Video element */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 z-10 w-full h-full object-cover"
+            style={{ objectPosition: 'center center' }}
+          >
+            <source src="/videos/skincare-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
           {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 z-20 bg-black/60"></div>
         </div>
 
         {/* Molecular pattern overlay */}
