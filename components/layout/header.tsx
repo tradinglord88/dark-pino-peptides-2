@@ -17,27 +17,27 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3 min-w-0 flex-shrink-0">
             <div className="flex items-center space-x-2">
               <Image
                 src="/images/pepe-mascot.png"
                 alt="Dark Pino Pepe Logo"
                 width={32}
                 height={32}
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover flex-shrink-0"
               />
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="flex flex-col">
-                <span className="text-lg font-permanent-marker text-3d-yellow leading-tight">
+            <div className="flex items-center space-x-2 sm:space-x-4 min-w-0">
+              <div className="flex flex-col min-w-0">
+                <span className="text-base sm:text-lg font-permanent-marker text-3d-yellow leading-tight whitespace-nowrap">
                   DARK PINO
                 </span>
-                <span className="text-sm font-bold text-white tracking-wider leading-tight">
+                <span className="text-xs sm:text-sm font-bold text-white tracking-wider leading-tight whitespace-nowrap">
                   PEPTIDES
                 </span>
               </div>
-              <div className="hidden md:block h-8 w-px bg-gray-500/50"></div>
-              <span className="hidden md:block text-xs font-semibold text-white/70 tracking-widest uppercase">
+              <div className="hidden lg:block h-8 w-px bg-gray-500/50 flex-shrink-0"></div>
+              <span className="hidden lg:block text-xs font-semibold text-white/70 tracking-widest uppercase whitespace-nowrap">
                 NEXT-GEN RESEARCH CHEMISTRY
               </span>
             </div>

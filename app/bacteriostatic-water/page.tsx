@@ -1,23 +1,40 @@
+'use client'
+
 import { ProductGrid } from '@/components/shop/product-grid'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function BacteriostaticWaterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
       {/* Hero Section */}
       <div className="relative min-h-[500px] overflow-hidden">
-        {/* Laboratory Background Image */}
+        {/* Video Background */}
         <div className="absolute inset-0">
-          <Image
-            src="/images/laboratory.jpg"
-            alt="Research Laboratory"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/60"></div>
+          {/* Fallback gradient background */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-950 via-cyan-900 to-teal-950">
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-transparent to-cyan-500/20" />
+              <div className="absolute inset-0 bg-gradient-to-bl from-cyan-500/15 via-transparent to-teal-500/15" />
+            </div>
+          </div>
+
+          {/* Video element */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 z-10 w-full h-full object-cover"
+            style={{ objectPosition: 'center center' }}
+            onLoadedData={(e) => {
+              const video = e.target as HTMLVideoElement;
+              video.playbackRate = 0.5;
+            }}
+          >
+            <source src="/videos/bacteriostatic-water-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         {/* Molecular pattern overlay */}
@@ -51,7 +68,7 @@ export default function BacteriostaticWaterPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
               Bacteriostatic Water
             </h1>
-            <p className="text-lg text-gray-100 mb-8 drop-shadow-md">
+            <p className="text-lg text-black mb-8 drop-shadow-md font-semibold">
               Essential bacteriostatic water for reconstituting and diluting research peptides.
               Available in multiple sizes to meet your research requirements.
             </p>

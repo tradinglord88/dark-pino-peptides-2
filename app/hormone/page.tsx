@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { ProductCard } from '@/components/shop/product-card'
 
 const hormoneProducts = [
@@ -347,17 +346,29 @@ export default function HormonePage() {
     <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
       {/* Hero Section */}
       <div className="relative min-h-[500px] overflow-hidden">
-        {/* Laboratory Background Image */}
+        {/* Video Background */}
         <div className="absolute inset-0">
-          <Image
-            src="/images/laboratory.jpg"
-            alt="Research Laboratory"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/60"></div>
+          {/* Fallback gradient background */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-orange-950 via-red-900 to-purple-950">
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 via-transparent to-red-500/20" />
+              <div className="absolute inset-0 bg-gradient-to-bl from-red-500/15 via-transparent to-purple-500/15" />
+            </div>
+          </div>
+
+          {/* Video element */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 z-10 w-full h-full object-cover"
+            style={{ objectPosition: 'center center' }}
+          >
+            <source src="/videos/hormone-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         {/* Molecular pattern overlay */}
