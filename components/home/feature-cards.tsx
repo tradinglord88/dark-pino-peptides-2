@@ -32,6 +32,15 @@ export function FeatureCards() {
       ),
       title: "ONLINE SUPPORT",
       description: "Have questions? We can help. Email us or connect with us via our Contact page."
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m-3-6h6" />
+        </svg>
+      ),
+      title: "PAY WITH CRYPTO",
+      description: "Secure cryptocurrency payments accepted. Bitcoin, Ethereum, and other major cryptocurrencies supported."
     }
   ]
 
@@ -46,7 +55,7 @@ export function FeatureCards() {
       </div>
       
       <div className="relative container mx-auto px-4 py-6 lg:py-8 pb-0">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}

@@ -114,8 +114,15 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 py-8">
-      <div className="container mx-auto max-w-md px-4">
+    <div className="min-h-screen relative py-8" style={{
+      backgroundImage: 'url(/images/molecular-background.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed'
+    }}>
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="relative container mx-auto max-w-md px-4">
         {/* Back Button */}
         <div className="mb-8">
           <Link
