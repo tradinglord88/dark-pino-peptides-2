@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function PeptidesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
+    <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <div className="relative min-h-[500px] overflow-hidden">
         {/* Laboratory Background Image */}
@@ -37,9 +37,9 @@ export default function PeptidesPage() {
           </svg>
         </div>
 
-        {/* Diagonal cut - darker shade */}
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-20 bg-[#0a0a1a]"
+        {/* Diagonal cut - black */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-20 bg-black"
           style={{
             clipPath: 'polygon(0 100%, 100% 40%, 100% 100%)'
           }}

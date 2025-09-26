@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function SkincarePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]">
+    <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <div className="relative min-h-[500px] overflow-hidden">
         {/* Video Background */}

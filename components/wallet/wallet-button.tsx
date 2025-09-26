@@ -25,7 +25,7 @@ export function WalletButton() {
     <button
       onClick={handleWalletClick}
       disabled={connecting}
-      className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
+      className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200"
     >
       <Wallet size={18} className="text-white" />
       <span className="hidden sm:block text-white font-medium">

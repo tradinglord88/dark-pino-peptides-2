@@ -98,7 +98,7 @@ export function Header() {
             {authHydrated && user ? (
               <Link
                 href="/account"
-                className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
+                className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200"
               >
                 <User size={18} className="text-white" />
                 <span className="hidden sm:block text-white font-medium">
@@ -108,7 +108,7 @@ export function Header() {
             ) : authHydrated ? (
               <Link
                 href="/auth"
-                className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
+                className="flex items-center space-x-2 px-3 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200"
               >
                 <LogIn size={18} className="text-white" />
                 <span className="hidden sm:block text-white font-medium">Sign In</span>
@@ -118,7 +118,7 @@ export function Header() {
             {/* Cart Button */}
             <button
               onClick={toggleCart}
-              className="relative flex items-center space-x-2 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200 transform hover:scale-105"
+              className="relative flex items-center space-x-2 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 rounded-lg transition-all duration-200"
             >
               <ShoppingCart size={20} className="text-white" />
               <span className="hidden sm:block text-white font-medium">Cart</span>

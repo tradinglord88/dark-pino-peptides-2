@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, User, Mail, Lock, Eye, EyeOff } from 'lucide-react'
+import { ArrowLeft, User, Mail, Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react'
 import { useAuthStore } from '@/stores/auth-store'
 
 export default function AuthPage() {
@@ -277,6 +277,17 @@ export default function AuthPage() {
               </p>
             </div>
           </form>
+        </div>
+
+        {/* Admin Access Button */}
+        <div className="mt-6 pt-6 border-t border-gray-700">
+          <Link
+            href="/admin/login"
+            className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-all duration-200 border border-gray-600"
+          >
+            <ShieldCheck className="w-5 h-5" />
+            <span>Admin Portal Access</span>
+          </Link>
         </div>
 
         {/* Additional Info */}
